@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>989257849097-sa803eaaj55r04tvimn4kr2ieut0qg9l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.989257849097-sa803eaaj55r04tvimn4kr2ieut0qg9l</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>989257849097-p1omj4ce4k12va9r1r3tv0idpqh5nvt1.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyByOiAMKVMsePMRqiwR9NX-R66CsXmKy1M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>989257849097</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cloud.letsapp.fa</string>
+	<key>PROJECT_ID</key>
+	<string>firewatcher-demo</string>
+	<key>STORAGE_BUCKET</key>
+	<string>firewatcher-demo.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:989257849097:ios:583cb473f10977fc3f1bd8</string>
+</dict>
+</plist>
