@@ -9,6 +9,7 @@ import ThingDetailsCard from '../../components/ThingDetailsCard';
 import HistoryItem from '../../components/HistoryItem';
 import COLOR from '../../constants/Theme/color';
 
+
 const ThingDetailsScreen = ({ route, navigation }: any,) => {
 
     const { id } = route.params;

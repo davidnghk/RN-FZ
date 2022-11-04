@@ -49,11 +49,13 @@ export function fetchThings() {
 
             const token = await AsyncStorage.getItem('authToken');
 
-            const res = await fetch(`${Config.api_server}/things`, {
+            const res = await fetch(`${Config.api_server}/things?category=Watch`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
+
+            // console.log("token", token)
 
             if (res.status === 401) {
                 triggerLogout(res);

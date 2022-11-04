@@ -1,7 +1,7 @@
 export default {
     viewDetail: '浏览详情',
-    viewDevice: '浏览装置',
-    scanDevice: '新增装置',
+    viewDevice: '浏览人員',
+    scanDevice: '新增人員',
     scanAgain: '重新扫描',
     languageSetting: '语言设定',
     fontSizeSetting: '字型设定',

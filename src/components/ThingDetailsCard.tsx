@@ -8,11 +8,14 @@ import ViewFloorplan from './ViewFloorplan';
 import Card from './Elements/Card';
 import CustomText from './Text/CustomText';
 import CustomTitle from './Text/CustomTitle';
-import { getTranslateType } from '../utils/resuableMethods';
+import { fireSensorGetColorFromStatusOrWarning, getTranslateType, formatDateTime } from '../utils/resuableMethods';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+
+
 
 const Row = (props: any) => {
     return (
@@ -56,12 +59,14 @@ const ThingDetailsCard = (props: any) => {
     const icon = useSelector((state: RootState) => state.icons.icons).find(icon => icon.id === thingDetails?.icon_id);
     const location = useSelector((state: RootState) => state.locations.locations).find(location => location.id === thingDetails?.location_id);
 
+    
+
     return (
 
         <ScrollView>
-            <Card style={styles.card}>
-
-                <TouchableOpacity style={styles.editContainer} onPress={() => navigation.navigate('Devices', { screen: 'EditDeviceScreen', params: { id: id, xCoordinate: thingDetails.x_coordinate, yCoordinate: thingDetails.y_coordinate, locationId: thingDetails.location_id, name: thingDetails.name } })}>
+            
+            <Card style={dynamicStyles(thingDetails?.state, thingDetails?.onoff_status, thingDetails?.warning_flag).item}>
+                <TouchableOpacity style={styles.editContainer} onPress={() => navigation.navigate('Person', { screen: 'EditDeviceScreen', params: { id: id, xCoordinate: thingDetails.x_coordinate, yCoordinate: thingDetails.y_coordinate, locationId: thingDetails.location_id, name: thingDetails.name } })}>
                     <Icon name='edit' size={20} color='black' />
                 </TouchableOpacity>
 
@@ -81,21 +86,51 @@ const ThingDetailsCard = (props: any) => {
 
                     <View style={styles.textCol}>
                         <CustomText style={styles.title}>{thingDetails?.name}</CustomText>
-                        <CustomText>{icon?.name}</CustomText>
+                        {/* <CustomText>{icon?.name}</CustomText> */}
+                        <CustomText>{location?.name}</CustomText>
+                        <CustomText>{getTranslateType(thingDetails?.onoff_status)}</CustomText>
+                        <CustomText>{formatDateTime(thingDetails?.updated_at)}</CustomText>
+
                     </View>
 
                 </View>
 
-                <View style={styles.detailsContainer}>
-                    <Row label={t('common:code')} content={thingDetails?.code} />
-                    <Row label={t('common:status')} content={getTranslateType(thingDetails?.onoff_status)} />
-                    <Row label={t('common:location')} content={location?.name} />
+                { thingDetails?.latitude && thingDetails?.longitude && 
+                <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                    <MapView
+                        style={{height:400, width: 300, marginTop: 15}}
+                        provider= {PROVIDER_GOOGLE}
+                        showsUserLocation
+                        zoomControlEnabled={true}
+                        zoomEnabled={true}
+                        initialRegion={{
+                            latitude: parseFloat(thingDetails?.latitude),
+                            longitude: parseFloat(thingDetails?.longitude),
+                            latitudeDelta: 0.04,
+                            longitudeDelta: 0.05,
+                        }}
+                        // onMapLoaded={() => console.log("Map is ready")}
+                    >
+                        <Marker 
+                            coordinate= {{
+                                latitude: parseFloat(thingDetails?.latitude), 
+                                longitude: parseFloat(thingDetails?.longitude) 
+                            }} 
+                            title={"location"}
+                            pinColor={"red"}/>
+                    </MapView>
+                </View> }
 
-                    {thingDetails?.warning_flag ?
-                        <Row label={t('common:warning')} warning_flag={thingDetails?.warning_flag} sensorFault={thingDetails?.sensor_fault} powerWarning={thingDetails?.power_warning} />
-                        :
-                        <Row label={t('common:warning')} content='0' />
-                    }
+
+
+
+                <View style={styles.detailsContainer}>
+                    {/* <Row label={t('common:code')} content={thingDetails?.code} /> */}
+                    <Row label={t('common:bp_heart')} content={thingDetails?.bp_heart} />
+                    <Row label={t('common:bloodpressure')} content={thingDetails?.bp_high + " / " + thingDetails?.bp_low} />
+                    <Row label={t('common:body_temp')} content={thingDetails?.body_temp + "°C"}></Row>
+                    <Row label={t('common:skin_temp')} content={thingDetails?.skin_temp + "°C"}></Row>
+
 
                     {/* <Row label={t('common:location')} content={`Block 01 ( ${thingDetails?.x_coordinate}, ${thingDetails?.y_coordinate} )`} /> */}
 
@@ -115,6 +150,7 @@ const ThingDetailsCard = (props: any) => {
 
                 </View>
             </Card>
+            
 
             <View>
                 <CustomTitle style={styles.history}>{t('common:history')}</CustomTitle>
@@ -124,7 +160,15 @@ const ThingDetailsCard = (props: any) => {
 
     );
 };
+const dynamicStyles = (alertStatus?: any, onOffStatus?: any, warningFlag?: any) => StyleSheet.create({
+    item: {
+        backgroundColor: fireSensorGetColorFromStatusOrWarning(alertStatus, onOffStatus, warningFlag),
+        marginHorizontal: 20,
+        marginVertical: 20,
+        padding: 15,
+    }
 
+})
 const styles = StyleSheet.create({
     card: {
         marginHorizontal: 20,
@@ -171,7 +215,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: 'bold',
-        width: '35%',
+        width: '60%',
     },
     content: {
         width: '62%',
@@ -191,6 +235,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 3,
         width: 25,
         aspectRatio: 1,
+    },
+    map:{
+        flex: 1,
     }
 });
 

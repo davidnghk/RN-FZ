@@ -15,8 +15,8 @@ const CustomHeaderBackground = (props: any) => {
     return (
         <View style={styles.headerBgContainer}>
             <Image
-                style={{ width: 65, height: 65 }}
-                source={require('../assets/images/company_logo/Logo.png')}
+                style={{ width: 40, height: 40 }}
+                source={require('../assets/images/company_logo/SmartWatchLogo.png')}
                 resizeMode='contain'
             />
         </View>

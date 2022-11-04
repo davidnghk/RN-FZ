@@ -5,4 +5,5 @@ export default {
   user: '账户',
   ambience: '环境',
   locations: '地点',
+  person: '人員',
 }

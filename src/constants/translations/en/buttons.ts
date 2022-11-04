@@ -1,7 +1,7 @@
 export default {
     viewDetail: 'View Detail',
-    viewDevice: 'View Device',
-    scanDevice: 'Add Device',
+    viewDevice: 'View Peron',
+    scanDevice: 'Add Person',
     scanAgain: 'Scan Again',
     languageSetting: 'Language Setting',
     fontSizeSetting: 'Font Size Setting',

@@ -77,7 +77,7 @@ const LandingScreen = (props: any) => {
             }
 
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={require('../../assets/images/company_logo/Logo.png')} />
+                <Image style={styles.image} source={require('../../assets/images/company_logo/SmartWatchLogo.png')} />
             </View>
             <View>
                 <CustomButton onPress={() => { props.navigation.navigate('LoginScreen') }} >{t('buttons:login')}</CustomButton>

@@ -31,8 +31,8 @@ const AuthTabs = (props: any) => {
             case 'Alerts':
                 iconName = 'flame';
                 break;
-            case 'Devices':
-                iconName = 'reader';
+            case 'Person':
+                iconName = 'people';
                 break
             case 'User':
                 iconName = 'person';
@@ -93,8 +93,8 @@ const AuthTabs = (props: any) => {
                 <Tabs.Screen name="Home" component={HomeStackScreen} options={{ tabBarLabel: t('tab:home') }} />
                 <Tabs.Screen name="Alerts" component={AlertStackScreen} options={{ tabBarLabel: t('tab:alerts') }} />
                 {/* <Tabs.Screen name="Ambience" component={AmbienceStackScreen} options={{ tabBarLabel: t('tab:ambience') }} /> */}
+                <Tabs.Screen name="Person" component={ThingStackScreen} options={{ tabBarLabel: t('tab:person') }} />
                 <Tabs.Screen name="Locations" component={LocationStackScreen} options={{ tabBarLabel: t('tab:locations') }} />
-                <Tabs.Screen name="Devices" component={ThingStackScreen} options={{ tabBarLabel: t('tab:devices') }} />
                 <Tabs.Screen name="User" component={UserStackScreen} options={{ tabBarLabel: t('tab:user') }} />
 
             </Tabs.Navigator>

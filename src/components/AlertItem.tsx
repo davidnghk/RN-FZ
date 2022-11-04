@@ -36,7 +36,7 @@ const AlertItem = (props: Alert) => {
                         // <Image style={styles().image} source={productIcons[thing.icon_id]} />
                         <Image style={styles().image} source={{ uri: thing.icon_url }} />
                         :
-                        <Image style={styles().image} source={require('../assets/images/company_logo/Logo.png')} />
+                        <Image style={styles().image} source={require('../assets/images/company_logo/SmartWatchLogo.png')} />
                     }
                 </View>
 

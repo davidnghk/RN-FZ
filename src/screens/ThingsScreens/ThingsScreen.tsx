@@ -11,6 +11,7 @@ import EmptyDeviceScreen from './EmptyDeviceScreen';
 import COLOR from '../../constants/Theme/color';
 import Loader from '../../components/Loader';
 
+
 const ThingsScreen = (props: any) => {
 
     const things = useSelector((state: RootState) => state.things.things);
@@ -18,6 +19,7 @@ const ThingsScreen = (props: any) => {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const { t } = useTranslation();
+
 
     useEffect(() => {
         dispatch(fetchThings());
@@ -33,6 +35,7 @@ const ThingsScreen = (props: any) => {
     const renderThingsItem = (itemData) => {
         return (
             <ThingItem
+                id={itemData.item.id}
                 name={itemData.item.name}
                 thing_code={itemData.item.code}
                 alertStatus={itemData.item.state}
@@ -66,7 +69,13 @@ const ThingsScreen = (props: any) => {
             </View>
 
             <FlatList
-                data={things}
+                data={things.sort((a,b) => {
+                    
+                    if(a.onoff_status.toLowerCase() != "offline" && b.onoff_status.toLowerCase()) {
+                        return a.onoff_status < b.onoff_status
+                    }
+
+                })}
                 keyExtractor={item => item.id.toString()}
                 renderItem={renderThingsItem}
                 maxToRenderPerBatch={5}

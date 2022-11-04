@@ -97,7 +97,7 @@ const LocationDetailsScreen = ({ route, navigation }: any,) => {
             {location.things.length > 0 &&
                 <View style={{ padding: 10 }}>
                     <View style={{ marginTop: 10 }}>
-                        <CustomTitle style={styles.middleTitle}>{t('navigate:devices')}</CustomTitle>
+                        <CustomTitle style={styles.middleTitle}>{t('navigate:person')}</CustomTitle>
                     </View>
 
                     <View >
@@ -115,7 +115,7 @@ const LocationDetailsScreen = ({ route, navigation }: any,) => {
                                     icon_url={thing.icon_url}
                                     location_id={thing.location_id}
                                     onPress={() => {
-                                        navigation.navigate("Devices", {
+                                        navigation.navigate("Person", {
                                             screen: 'ThingDetailsScreen',
                                             params: { id: thing.id },
                                             initial: false

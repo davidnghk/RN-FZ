@@ -16,6 +16,8 @@
 #import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
+#import <GoogleMaps/GoogleMaps.h>
+
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
@@ -28,6 +30,7 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
+@import GoogleMaps;
 @implementation AppDelegate
 
 // Required for the register event.
@@ -56,7 +59,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+  [GMSServices provideAPIKey:@"AIzaSyD06xKUH8-PQPog1L2-wraIZIaKhJ3RtZo"];
   NSDictionary *appProperties = [RNFBMessagingModule addCustomPropsToUserProps:nil withLaunchOptions:launchOptions];
 
   if ([FIRApp defaultApp] == nil) {
@@ -69,9 +72,10 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
   InitializeFlipper(application);
 #endif
 
+
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
-                                                   moduleName:@"FireAlert"
+                                                   moduleName:@"LifeOnline"
                                             initialProperties:appProperties];
 
   if (@available(iOS 13.0, *)) {
@@ -99,6 +103,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
+
 {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];

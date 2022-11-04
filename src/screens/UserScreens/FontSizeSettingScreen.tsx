@@ -66,7 +66,7 @@ const FontSizeSettingScreen = () => {
         <CustomTitle style={styles.title}>{t('sentence:selectFontSize')}</CustomTitle>
 
         <View style={styles.articleContainer}>
-          <CustomText>FireAlert is a new-generation of Fire Alarm Management System (FAMS), based on the new-generation of wireless Internet of Things (IoT) and LoraWAN-based sensors, to provide long-range, low-power implementation.</CustomText>
+          <CustomText>LifeOnline is a new-generation of Fire Alarm Management System (FAMS), based on the new-generation of wireless Internet of Things (IoT) and LoraWAN-based sensors, to provide long-range, low-power implementation.</CustomText>
         </View>
 
       </View>

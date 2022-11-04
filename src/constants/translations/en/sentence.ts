@@ -40,7 +40,7 @@ export default {
     addedToYourAccount: 'Added to your account.',
     ifhaveAnotherDevice: 'If you have another device to set up, do it now.',
     otherwise: 'Otherwise, tap Next.',
-    smokeDetected: 'SMOKE DETECTED',
+    smokeDetected: 'SOS',
     sensorTest: 'SENSOR TEST',
     eitherOneNeedToBeFilled: 'Either phone or email is required to be filled.',
     invitationHasBeenSent: 'Your invitation has been sent successfully',

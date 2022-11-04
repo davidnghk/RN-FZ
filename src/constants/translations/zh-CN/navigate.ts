@@ -4,7 +4,7 @@ export default {
     devices: "装置",
     details: "详情",
     error: "错误",
-    addDevice: "加入装置",
+    addDevice: "加入人員",
     scanQRCode: "扫描二维码",
     addLocation: "加入地点",
     userGuide: "用户指南",
@@ -26,5 +26,6 @@ export default {
     ambienceList: '环境装置',
     ambienceDevice: '详情',
     checkYourEmail: '查看你的邮件',
-    locations: '地点'
+    locations: '地点',
+    person: "人員",
 };

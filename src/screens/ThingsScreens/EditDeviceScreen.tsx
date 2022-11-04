@@ -116,37 +116,6 @@ const EditDeviceScreen = ({ route, navigation }) => {
                         </View>
                     </View>
 
-
-                    <View style={[{ ...styles.row }, { justifyContent: 'space-between', alignItems: 'center' }]}>
-                        <Label>{t('navigate:locations')}</Label>
-
-                        {thingCurrentLocation?.floorplan && thingCurrentLocation?.id == selectedPickerValue &&
-                            <TouchableOpacity onPress={() => navigation.navigate('EditCoordinateScreen', { thingId: thingDetails.id, thingName: name, locationId: thingDetails.locationId, action: "update" })}>
-                                <Text style={{ color: 'blue' }}>{t('buttons:editCoordinate')}</Text>
-                            </TouchableOpacity>
-                        }
-                    </View>
-
-                    <View style={[{ ...styles.row }]}>
-                        <View style={styles.pickerContainer}>
-                            <Picker
-                                selectedValue={selectedPickerValue}
-                                onValueChange={(itemValue, itemIndex) => [setSelectedPickerValue(itemValue), showSaveAndEditButtonHandler(itemValue)]}
-                                style={styles.picker}
-                                itemStyle={styles.pickerItem}
-                            >
-
-                                <Picker.Item key='' label={`-- ${t('buttons:selectLocation')} --`} value={null} enabled={true} />
-
-                                {locations.map(thingCurrentLocation => {
-                                    return (
-                                        <Picker.Item label={thingCurrentLocation.name} value={thingCurrentLocation.id} key={thingCurrentLocation.id} />
-                                    )
-                                })}
-
-                            </Picker>
-                        </View>
-                    </View>
                 </View>
 
                 {/* ********** Button Container ********** */}
@@ -157,7 +126,7 @@ const EditDeviceScreen = ({ route, navigation }) => {
                         :
                         <View>
                             {showSaveAndEditButton &&
-                                <CustomButton onPress={() => { navigation.navigate("EditCoordinateScreen", {thingId: thingDetails.id, thingName: name, locationId: selectedPickerValue, action: 'update'}) }} > {t('buttons:saveAndEditCoord')} </CustomButton>
+                                <CustomButton onPress={() => { navigation.navigate("EditCoordinateScreen", {thingId: thingDetails.id, thingName: name, action: 'update'}) }} > {t('buttons:saveAndEditCoord')} </CustomButton>
                             }
                             <CustomButton onPress={() => { editThingHandler() }} > {t('buttons:save')}</CustomButton>
                         </View>

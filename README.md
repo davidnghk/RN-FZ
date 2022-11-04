@@ -1,2 +1,0 @@
-# RN-FireAlert
-# RN-LifeOnline

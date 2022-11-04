@@ -27,6 +27,12 @@ export default {
     directReading: '煙霧濃度',
     proprietary: '濃度基數',
     readingTime: '讀數時間',
+    bp_heart: '心跳',
+    bloodpressure: '血壓',
+    body_temp: '體溫',
+    skin_temp: '皮膚溫度',
+    update_at: '更新時間',
+    // Others
     // Others
     user: '用戶',
     account: '賬戶',
@@ -38,6 +44,7 @@ export default {
     devices: '裝置',
     deviceState: '裝置狀況',
     deviceStatus: '裝置狀態',
+    personStatus: '人員狀態',
     currentDevices: '現有裝置',
     haveWarning: '異常',
     noWarning: '正常',

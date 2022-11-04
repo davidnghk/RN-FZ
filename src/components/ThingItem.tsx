@@ -4,13 +4,15 @@ import { View, StyleSheet, Image } from 'react-native';
 import { productIcons } from '../assets/images/mapping';
 import ClickableItem from './Elements/ClickableItem';
 import CustomText from './Text/CustomText';
-import { fireSensorGetColorFromStatusOrWarning, getTranslateType } from '../utils/resuableMethods';
+import { getTranslateType, formatDateTime, fireSensorGetColorFromStatusOrWarning } from '../utils/resuableMethods';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 
+
 interface Thing {
+    id: number | null,
     name: string | null,
     thing_code: string | null,
     alertStatus: string,
@@ -29,6 +31,7 @@ const ThingItem = (props: Thing) => {
     const { t } = useTranslation();
     const icon = useSelector((state: RootState) => state.icons.icons.filter(icon => props.icon_id === icon.id)[0]);
     const location = useSelector((state: RootState) => state.locations.locations).find(location => location.id === props.location_id);
+    const thingDetails = useSelector((state: RootState) => state.things.things).find(thing => thing.id === props.id)!;
 
     return (
 
@@ -42,31 +45,10 @@ const ThingItem = (props: Thing) => {
 
                 <View style={styles.summaryCol}>
                     <CustomText numberOfLines={2} ellipsizeMode='tail' style={{ fontWeight: 'bold' }}>{props.name}</CustomText>
-                    {/* <CustomText>{props.thing_code}</CustomText> */}
-                    <CustomText>{icon?.name}</CustomText>
-                    <CustomText>{t('common:location')}: {location?.name} </CustomText>
-                    <CustomText>{t('common:status')}: {getTranslateType(props.onOffStatus)}</CustomText>
-
-                    <View style={styles.warningIconRow}>
-
-                        <CustomText >
-                            {t('common:warning')}: {props.warningFlag == false ? 0 : ''}
-                        </CustomText>
-
-                        {props.sensorFault &&
-                            <View style={styles.warningIconContainer}>
-                                <Ionicons name='alert-circle' color='white' size={18} style={{ width: 26 - 32 }} />
-                            </View>}
-
-                        {props.powerWarning &&
-                            <View style={styles.warningIconContainer}>
-                                {/* <Ionicons name='ios-power' color='white' size={18} style={{ width: 26 - 32 }} /> */}
-                                {/* <Ionicons name='alert-circle' color='white' size={18} style={{ width: 26 - 32 }} /> */}
-                                <MaterialIcons name='battery-alert' color='white' size={18} style={{ width: 26 - 32 }} />
-                            </View>
-                        }
-
-                    </View>
+                    <CustomText>{t('common:bp_heart')}: {thingDetails?.bp_heart} </CustomText>
+                    <CustomText>{t('common:body_temp')}: {thingDetails?.body_temp + "˚C"} </CustomText>
+                    <CustomText>{t('common:bloodpressure')}: {thingDetails?.bp_high + " / " + thingDetails?.bp_low } </CustomText>
+                    <CustomText>{ formatDateTime(thingDetails?.updated_at) } </CustomText>
                 </View>
 
             </View>

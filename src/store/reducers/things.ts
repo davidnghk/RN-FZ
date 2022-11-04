@@ -1,3 +1,4 @@
+import { NullLiteral } from '@babel/types';
 import { ThingsActions } from '../actions/things';
 
 export interface Thing {
@@ -24,6 +25,13 @@ export interface Thing {
     reading_datetime: string | null,
     created_at: string | null,
     updated_at: string | null,
+    bp_heart: number | null,
+    bp_high: number | null,
+    bp_low: number | null,
+    latitude: number | null,
+    longitude: number | null,
+    body_temp: number | null,
+    skin_temp: number | null,
 };
 
 export interface ThingsState {

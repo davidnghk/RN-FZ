@@ -4,5 +4,6 @@ export default {
     devices: 'Devices',
     user: 'User',
     ambience: 'Ambience',
-    locations: 'Locations'
+    locations: 'Locations',
+    person: 'Person',
   };

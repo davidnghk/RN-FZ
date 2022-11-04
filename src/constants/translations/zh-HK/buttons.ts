@@ -1,7 +1,7 @@
 export default {
     viewDetail: '瀏覽詳情',
-    viewDevice: '瀏覽裝置',
-    scanDevice: '新增裝置',
+    viewDevice: '瀏覽人員',
+    scanDevice: '新增人員',
     scanAgain: '重新掃描',
     languageSetting: '語言設定',
     fontSizeSetting: '字型設定',

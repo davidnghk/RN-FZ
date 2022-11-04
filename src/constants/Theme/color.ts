@@ -36,9 +36,10 @@ const COLOR = {
 
     /*  ********** HomeScreen Chart Color ********** */
     drillChartColor: '#ffa600',
+    normalChartColor: '#25b71f',
     alarmChartColor: '#ff6361',
     quietChartColor: '#25b71f',
-    offlineChartColor: '#2852DB',
+    offlineChartColor: '#767676',
     prealarmChartCOlor: '#FF00FF',
     faultChartColor: '#58508d',
 

@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:989257849097:android:285db92732fd56df3f1bd8",
         "android_client_info": {
-          "package_name": "cloud.letsapp.fcw"
+          "package_name": "cloud.letsapp.lifeonline"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "989257849097-p1omj4ce4k12va9r1r3tv0idpqh5nvt1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "cloud.letsapp.fcw",
+            "package_name": "cloud.letsapp.lifeonline",
             "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },
@@ -42,7 +42,7 @@
               "client_id": "989257849097-suhlh0oh8ekpve854j54066c2oks6qrb.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "cloud.letsapp.fcw"
+                "bundle_id": "cloud.letsapp.lifeonline"
               }
             }
           ]

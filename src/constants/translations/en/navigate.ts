@@ -25,5 +25,6 @@ export default {
     ambienceList: 'Ambience Devices',
     ambienceDevice: 'Details',  
     checkYourEmail: 'Check Your Email',
-    locations: "Locations"
+    locations: "Locations",
+    person: "Person",
 };

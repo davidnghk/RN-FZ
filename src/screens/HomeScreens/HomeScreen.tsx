@@ -46,13 +46,17 @@ const HomeScreen = (props: any) => {
     const locations = useSelector((state: RootState) => state.locations.locations);
 
     // Collecting Data for Master Ring Pie Chart
-    const numOfThingsWithDrills = (things?.filter(thing => thing.onoff_status.toLowerCase() === 'drill')).length;
-    const numOfThingsWithAlarms = (things?.filter(thing => thing.onoff_status.toLowerCase() === 'alarm')).length;
-    const numOfThingsWithQuiet = (things?.filter(thing => thing.onoff_status.toLowerCase() === 'quiet')).length;
+    // const numOfThingsWithDrills = (things?.filter(thing => thing.onoff_status.toLowerCase() === 'drill')).length;
+    // const numOfThingsWithAlarms = (things?.filter(thing => thing.onoff_status.toLowerCase() === 'alarm')).length;
+    // const numOfThingsWithQuiet = (things?.filter(thing => thing.onoff_status.toLowerCase() === 'quiet')).length;
     const numOfThingsOffline = things?.filter(thing => thing.onoff_status.toLowerCase() === 'offline').length;
 
+    const numOfThingsWithNormal = (things?.filter(thing => thing.onoff_status?.toLowerCase() === 'normal')).length;
+    const numOfThingsWithAlarms = (things?.filter(thing => thing.onoff_status?.toLowerCase() === 'alarm')).length;
+
     // Data used to make the animate prop work
-    const defaultMasterRingData = [{ x: 'Drill', y: 0 }, { x: 'Alarm', y: 0 }, { x: 'Quiet', y: 0 }, { x: 'Offline', y: 100 }]
+    // const defaultMasterRingData = [{ x: 'Drill', y: 0 }, { x: 'Alarm', y: 0 }, { x: 'Quiet', y: 0 }, { x: 'Offline', y: 100 }]
+    const defaultMasterRingData = [{ x: 'Normal', y: 0}, { x: 'Alarm', y: 0 }]
     const [masterRingData, setMasterRingData] = useState(defaultMasterRingData);
 
     let emptyAlert: AlertInterface[] = [];
@@ -97,9 +101,12 @@ const HomeScreen = (props: any) => {
 
     // Update Master Ring Pie Chart Data Set when things change
     useEffect(() => {
-        const masterRingCheckList = [numOfThingsWithDrills, numOfThingsWithAlarms, numOfThingsWithQuiet, numOfThingsOffline];
-        const masterRingTitleList = [t('common:drill'), t('common:alarm'), t('common:quiet'), t('common:offline')];
-        const masterRingColorList = [COLOR.drillChartColor, COLOR.alarmChartColor, COLOR.quietChartColor, COLOR.offlineChartColor];
+        // const masterRingCheckList = [numOfThingsWithDrills, numOfThingsWithAlarms, numOfThingsWithQuiet, numOfThingsOffline];
+        const masterRingCheckList = [numOfThingsWithNormal, numOfThingsWithAlarms, numOfThingsOffline]
+        // const masterRingTitleList = [t('common:drill'), t('common:alarm'), t('common:quiet'), t('common:offline')];
+        // const masterRingColorList = [COLOR.drillChartColor, COLOR.alarmChartColor, COLOR.quietChartColor, COLOR.offlineChartColor];
+        const masterRingTitleList = [t('common:normal'), t('common:alarm'), t('common:offline')];
+        const masterRingColorList = [COLOR.normalChartColor, COLOR.alarmChartColor, COLOR.offlineChartColor];
 
         for (let i = 0; i < masterRingCheckList.length; i++) {
             if (masterRingCheckList[i] > 0) {
@@ -257,7 +264,7 @@ const HomeScreen = (props: any) => {
                 onPress={() => { navigation.navigate('Locations', { screen: 'LocationDetailsScreen', params: { id: itemData.item.id } }) }}
             >
                 <View style={styles.iconImageContainer}>
-                    <Image style={{ width: '100%', height: '100%' }} source={require('../../assets/images/company_logo/Logo.png')} />
+                    <Image style={{ width: '100%', height: '100%' }} source={require('../../assets/images/company_logo/locations.jpeg')} />
                 </View>
                 <View style={{ width: '100%', alignItems: 'center' }}>
                     <CustomText style={{}} numberOfLines={1} >{itemData.item.name}</CustomText>
@@ -366,29 +373,32 @@ const HomeScreen = (props: any) => {
                     {/* ********** (2) Devices Status Row ********** */}
 
                     <View style={styles.titleContainer}>
-                        <CustomText style={styles.rowTitle}>{t('common:deviceStatus')}</CustomText>
+                        <CustomText style={styles.rowTitle}>{t('common:personStatus')}</CustomText>
                     </View>
 
                     <View style={styles.deviceStatusRow}>
 
                         <View style={styles.pieChartContainer}>
                             <ImageBackground
-                                style={[{ width: 70, height: 70, justifyContent: 'center', alignItems: 'center', }]}
+                                style={[{ width: 90, height: 90, justifyContent: 'center', alignItems: 'center', }]}
                                 resizeMode='contain'
-                                source={require('../../assets/images/company_logo/Logo.png')}>
+                                source={require('../../assets/images/company_logo/personstatus.jpeg')}>
 
                                 <VictoryPie
                                     animate={{ duration: 2000, easing: 'exp' }}
                                     labels={({ datum }) => `${datum.x}: ${Math.round(datum.y)}`}
                                     data={masterRingData}
-                                    width={300}
-                                    height={200}
+                                    width={500}
+                                    height={250}
                                     style={{
                                         data: {
-                                            fill: (d) => d.slice.data.dataColor
-                                        }
+                                            fill: (d) => d.slice.data.dataColor,
+                                            
+
+                                        },
+                                        
                                     }}
-                                    innerRadius={35}
+                                    innerRadius={60}
                                 />
                             </ImageBackground>
                         </View>
@@ -499,7 +509,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     deviceStatusRow: {
-        height: 200,
+        height: 250,
         width: rowWidth,
     },
     pieChartContainer: {

@@ -40,7 +40,7 @@ export default {
     addedToYourAccount: '裝置成功加入你的賬戶',
     ifhaveAnotherDevice: '如果你還有其他裝置，可馬上設定。',
     otherwise: '否則，請按下一步。',
-    smokeDetected: '煙霧感應',
+    smokeDetected: '緊急求救',
     sensorTest: '煙霧探測器測試',
     eitherOneNeedToBeFilled: '請填寫電話或電子郵件',
     invitationHasBeenSent: '你的邀請已成功發送',

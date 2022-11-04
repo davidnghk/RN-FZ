@@ -72,7 +72,7 @@ const ScanDeviceScreen = () => {
                 ref={(camera) => scanner = camera}
                 topContent={
                     <View style={styles.imageContainer}>
-                        <Image style={styles.image} source={require('../../assets/images/QRCodeGuide.png')} />
+                        <Image style={styles.image} source={require('../../assets/images/QRScanSample.jpeg')} />
                     </View>
                 }
             />

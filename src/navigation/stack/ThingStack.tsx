@@ -51,7 +51,7 @@ export const ThingStackScreen = () => {
         >
             <ThingStack.Screen name="ThingsScreen" component={ThingsScreen} options={
                 {
-                    headerTitle: t('navigate:devices'),
+                    headerTitle: t('navigate:person'),
                 }
             } />
             <ThingStack.Screen name="ThingDetailsScreen" component={ThingDetailsScreen} options={

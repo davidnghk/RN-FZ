@@ -4,5 +4,6 @@ export default {
     devices: '裝置',
     user: '賬戶',
     ambience: '環境',
-    locations: '地點'
+    locations: '地點',
+    person: '人員',
   };

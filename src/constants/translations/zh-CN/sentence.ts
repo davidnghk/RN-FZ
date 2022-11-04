@@ -40,7 +40,7 @@ export default {
     addedToYourAccount: '装置成功加入你的账户',
     ifhaveAnotherDevice: '如果你还有其他装置，可马上设定。',
     otherwise: '否则，请按下一步。',
-    smokeDetected: '烟雾感应',
+    smokeDetected: '紧急求救',
     sensorTest: '',
     eitherOneNeedToBeFilled: '请填写电话或电子邮件',
     invitationHasBeenSent: '你的邀请已成功发送',

@@ -27,6 +27,12 @@ export default {
     directReading: '烟雾浓度',
     proprietary: '浓度基数',
     readingTime: '读数时间',
+    bp_heart: '心跳',
+    bloodpressure: '血压',
+    body_temp: '体温',
+    skin_temp: '皮肤温度',
+    update_at: '更新时间',
+    // Others
     // Others
     user: '用户',
     account: '账户',
@@ -38,6 +44,7 @@ export default {
     devices: '装置',
     deviceState: '装置状况',
     deviceStatus: '装置状态',
+    personStatus: '人員状态',
     currentDevices: '现有装置',
     haveWarning: '异常',
     noWarning: '正常',
