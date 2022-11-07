@@ -11,21 +11,35 @@ buildscript {
         googlePlayServicesVersion = "+" 
         firebaseMessagingVersion = "+"
         firebaseVersion = "+" 
+        kotlinVersion = "1.6.0"
+      
     }
     repositories {
         google()
         jcenter()
+        maven { url 'https://developer.huawei.com/repo/' }   
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.1.0")
         classpath 'com.google.gms:google-services:4.3.8'
+        classpath 'com.huawei.agconnect:agcp:1.4.1.300'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+def REACT_NATIVE_VERSION = new File(['node', '--print',"JSON.parse(require('fs').readFileSync(require.resolve('react-native/package.json'), 'utf-8')).version"].execute(null, rootDir).text.trim())
+
+
 allprojects {
+    configurations.all {
+        resolutionStrategy {
+            // Remove this override in 0.65+, as a proper fix is included in react-native itself.
+            force "com.facebook.react:react-native:" + REACT_NATIVE_VERSION
+        }
+    }
     repositories {
+        
         mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
@@ -38,6 +52,8 @@ allprojects {
 
         // Added below for React Native Image Crop Picker
         maven { url 'https://maven.google.com' }
+
+        maven { url 'https://developer.huawei.com/repo/' }
 
         google()
         jcenter()
