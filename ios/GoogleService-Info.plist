@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>989257849097-sa803eaaj55r04tvimn4kr2ieut0qg9l.apps.googleusercontent.com</string>
+	<string>925983179268-sui7enqk56d8h9qlope2ct3m0jnt9gut.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.989257849097-sa803eaaj55r04tvimn4kr2ieut0qg9l</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>989257849097-p1omj4ce4k12va9r1r3tv0idpqh5nvt1.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.925983179268-sui7enqk56d8h9qlope2ct3m0jnt9gut</string>
 	<key>API_KEY</key>
-	<string>AIzaSyByOiAMKVMsePMRqiwR9NX-R66CsXmKy1M</string>
+	<string>AIzaSyCN7iEW4EnD08grKQDYC6UZGqVcozyeR-Q</string>
 	<key>GCM_SENDER_ID</key>
-	<string>989257849097</string>
+	<string>925983179268</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>cloud.letsapp.fa</string>
+	<string>cloud.letsapp.lifeonline</string>
 	<key>PROJECT_ID</key>
-	<string>firewatcher-demo</string>
+	<string>lifeonline-366508</string>
 	<key>STORAGE_BUCKET</key>
-	<string>firewatcher-demo.appspot.com</string>
+	<string>lifeonline-366508.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:989257849097:ios:583cb473f10977fc3f1bd8</string>
+	<string>1:925983179268:ios:61f8a9a729e70d57262b51</string>
 </dict>
 </plist>
