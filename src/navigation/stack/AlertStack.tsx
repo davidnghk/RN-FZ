@@ -11,6 +11,7 @@ import HeaderBackButton from '../../components/HeaderBackButton';
 import AlertsScreen from '../../screens/AlertsScreen/AlertsScreen';
 import AlertDetailsScreen from '../../screens/AlertsScreen/AlertDetailsScreen';
 import ThingDetailsScreen from '../../screens/ThingsScreens/ThingDetailsScreen';
+import EditAlertScreen from '../../screens/AlertsScreen/EditAlertScreen';
 import NetworkErrorScreen from '../../screens/NetworkErrorScreen';
 import ErrorScreen from '../../screens/ErrorScreen';
 import HeaderStyles from '../../constants/Theme/headerStyle';
@@ -21,6 +22,7 @@ const AlertStack = createStackNavigator();
 export const AlertStackScreen = (props: any) => {
 
     const { t } = useTranslation();
+    
 
     return (
 
@@ -68,6 +70,11 @@ export const AlertStackScreen = (props: any) => {
             <AlertStack.Screen name="ThingDetailsScreen" component={ThingDetailsScreen} options={
                 {
                     headerTitle: t('navigate:details'),
+                }
+            } />
+            <AlertStack.Screen name="EditAlertScreen" component={EditAlertScreen} options={
+                {
+                    headerTitle: t('navigate:editAlert'),
                 }
             } />
             <AlertStack.Screen name="NetworkErrorScreen" component={NetworkErrorScreen} options={

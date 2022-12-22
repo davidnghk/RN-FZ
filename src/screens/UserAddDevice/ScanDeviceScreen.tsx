@@ -24,6 +24,7 @@ const ScanDeviceScreen = () => {
     const isShowModal = useSelector((state: RootState) => state.modal.showModal);
     const showModalMsg = useSelector((state: RootState) => state.modal.messages);
 
+
     useEffect(() => {
 
         if (eui == 'null') {

@@ -17,7 +17,8 @@
 
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_foreground" android:value="false"/>
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color" android:resource="@color/white"/> 
-      <meta-data  android:name="com.google.android.geo.API_KEY"  android:value="AIzaSyD06xKUH8-PQPog1L2-wraIZIaKhJ3RtZo"/>  
+      <meta-data  android:name="com.google.android.geo.API_KEY"  android:value="AIzaSyD06xKUH8-PQPog1L2-wraIZIaKhJ3RtZo"/> 
+      <meta-data  android:name="push_kit_auto_init_enabled" android:value="true" />
 
       <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />
       <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />

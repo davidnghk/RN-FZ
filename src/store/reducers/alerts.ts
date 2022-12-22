@@ -17,6 +17,10 @@ export interface Alert {
     icon_name: string | null,
     thing_code: string | null,
     thing_name: string | null,
+    details: string | null,
+    photo: any | null,
+    photo_url: any | null,
+    category: string | null,
 }
 
 export interface AlarmPopUp {

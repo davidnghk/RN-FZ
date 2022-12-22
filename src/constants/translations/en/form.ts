@@ -6,6 +6,7 @@ export default {
     phoneNumber: 'Phone Number',
     nameOfDevice: 'Name of Device',
     pressToUploadFloorPlan: 'Press to Upload Floor Plan',
+    pressToUploadAlertPhoto: 'Upload Photo',
     email: 'E-mail',
     password: 'Password',
     currentPassword: 'Current Password',
@@ -16,4 +17,6 @@ export default {
     uploadFloorplan: 'Upload Floorplan',
     forgotPassword: 'Forgot Password ?',
     takePhoto: 'Take Photo',
+    details: 'Details',
+    uploadAlertPhoto: 'Upload Photo',
 };

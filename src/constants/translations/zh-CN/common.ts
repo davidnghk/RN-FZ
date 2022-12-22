@@ -75,4 +75,21 @@ export default {
     pm2_5: 'PM2.5',
     tvoc: 'TVOC',
     
+    photo: '圖片',
+
+    privacyPolicy:'私隐政策',
+    purposeOfCollectionOfPersonalData: '收集个人资料的目的',
+    collectionOfPersonalData: '个人资料收集',
+    disclosureOrTransferOfData: '资料的披露或传递',
+    cookiesAndLogFiles: 'Cookies和日志档',
+    googleAnalytics: "Google Analytics (分析)",
+    linksToOtherWebsitesOrApplications: "连结到其他网站/应用程式",
+    security: "保安措施",
+    accessToOrRequestForCorrectionOfData: "检阅或修改数据的要求",
+    retentionOfPersonalData: "个人资料的保存",
+    rightsApplicableToEuUsers: "适用于欧盟用户的权利",
+    changesInThisPrivacyPolicy: "私隐政策的变更",
+    inconsistency: "歧义",
+    enquiries: "联络方法",
+    map: "地图",
 };

@@ -38,5 +38,8 @@ export default {
     ambience: '環境',
     selectLocation: '選擇一個地點',
     editCoordinate: '編輯坐標',
-    saveAndEditCoord: '儲存及編輯坐標'
+    saveAndEditCoord: '儲存及編輯坐標',
+    editAlert: "修改",
+    privacyPolicy: "私隱政策",
+
 };

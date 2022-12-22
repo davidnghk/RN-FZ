@@ -10,6 +10,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import COLOR from '../../constants/Theme/color';
 import { updateDevice } from '../../store/actions/things';
 import { RootState } from '../../store/store'
+import location from '../../constants/translations/en/location';
 
 //@ts-ignore
 const RegisterDeviceScreen = ({ route, navigation }) => {
@@ -25,6 +26,7 @@ const RegisterDeviceScreen = ({ route, navigation }) => {
 
     const isLoading = useSelector((state: RootState) => state.things.isLoading);
     const locations = useSelector((state: RootState) => state.locations.locations);  // for drop down menu
+
 
     const Label = (props: any) => {
         return (
@@ -46,10 +48,11 @@ const RegisterDeviceScreen = ({ route, navigation }) => {
             return
         } else {
             const location = locations.find(location => location.id === selectedPickerValue);
-
+            console.log("This is location", location)
             if (location && location.floorplan) {
                 navigation.navigate("EditCoordinateScreen", { thingId: thingId, thingName: name, locationId: selectedPickerValue, action: "register" })
             }
+            dispatch(updateDevice(thingId, name, selectedPickerValue, null, null, null, null, 'register'))
         }
 
     }

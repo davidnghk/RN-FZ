@@ -23,7 +23,7 @@ const Row = (props: any) => {
 
             <CustomText style={styles.label}>{props.label}</CustomText>
 
-            {props.content &&
+            {String(props?.content) &&
                 <CustomText style={styles.content}>{props.content}</CustomText>
             }
 
@@ -59,7 +59,7 @@ const ThingDetailsCard = (props: any) => {
     const icon = useSelector((state: RootState) => state.icons.icons).find(icon => icon.id === thingDetails?.icon_id);
     const location = useSelector((state: RootState) => state.locations.locations).find(location => location.id === thingDetails?.location_id);
 
-    
+
 
     return (
 
@@ -81,7 +81,9 @@ const ThingDetailsCard = (props: any) => {
                 <View style={styles.headerRow}>
                     <View style={styles.imageCol}>
                         {/* {icon && <Image style={styles.icon} source={productIcons[thingDetails.icon_id]} />} */}
-                        {icon && <Image style={styles.icon} source={{ uri: thingDetails.icon_url }} />}
+                        {/* {icon && <Image style={styles.icon} source={{ uri: thingDetails.icon_url }} />} */}
+                        {icon && <Image style={styles.icon} source={{ uri: thingDetails.photo_url }} />}
+                        
                     </View>
 
                     <View style={styles.textCol}>

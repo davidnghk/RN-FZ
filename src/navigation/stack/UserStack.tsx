@@ -24,6 +24,7 @@ import ErrorScreen from '../../screens/ErrorScreen';
 import AmbienceDeviceListScreen from '../../screens/AmbienceScreen/AmbienceDeviceListScreen'
 import AmbienceDeviceScreen from '../../screens/AmbienceScreen/AmbienceDeviceScreen';
 import AmbienceDeviceChartScreen from '../../screens/AmbienceScreen/AmbienceDeviceChartScreen';
+import PrivacyPolicyScreen from '../../screens/UserScreens/PrivacyPolicyScreen';
 
 import COLOR from '../../constants/Theme/color';
 
@@ -63,6 +64,12 @@ export const UserStackScreen = (props: any) => {
             <UserStack.Screen name="VideoGuideScreen" component={VideoGuideScreen} options={
                 {
                     headerTitle: t('navigate:userGuide'),
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS, // <- Have to add this to prevent crash when naviagting to other screen
+                }
+            } />
+            <UserStack.Screen name="PrivacyPolicyScreen" component={PrivacyPolicyScreen} options={
+                {
+                    headerTitle: t('navigate:privacyPolicy'),
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS, // <- Have to add this to prevent crash when naviagting to other screen
                 }
             } />

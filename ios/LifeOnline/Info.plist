@@ -50,9 +50,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera usage for scanning device's uniqe QR code.</string>
+	<string>Camera usage for scanning device&apos;s uniqe QR code.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>To get navigation and see the info update about the LifeOnline smartwatch users near you</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Your message to user when the microsphone is accessed for the first time</string>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Modal, Text, Platform, Linking, Alert, Image, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 import CustomButton from './CustomButton';
 import { loadLatestAlert } from '../store/actions/alerts'
 import { useTranslation } from 'react-i18next';
@@ -13,12 +14,16 @@ const AlarmPopUp = (props: any) => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
+    const alertDetails = useSelector((state: RootState) => state.alerts.allAlerts.find(alert => alert.id === props.id));
+
     const Alarm = () => {
         return (
             <View style={styles.modalScreen}>
                 <View style={styles.modalContainer}>
                     <Text style={{ fontSize: 25, }}>{props.name}</Text>
                     <Text style={{ fontSize: 30 }}>{t('sentence:smokeDetected')}</Text>
+                    {/* <Text style={{ fontSize: 30 }}>{alertDetails?.category}</Text> */}
+
 
                     <View style={styles.imageContainer}>
                         <Image style={styles.image} source={require('../assets/images/components/siren.jpg')} />

@@ -128,7 +128,7 @@ export function fetchAlert(alertId: number) {
             };
 
             const data = await res.json();
-
+            
             if (!data) {
                 return
             }
@@ -145,3 +145,49 @@ export function fetchAlert(alertId: number) {
         }
     };
 };
+
+
+export function updateAlertDetails(alert_id: number, data: FormData) {
+    return async (dispatch: ThunkDispatch, getState: () => RootState) => {
+        try {
+
+            const token = await AsyncStorage.getItem('authToken');
+
+            const res = await fetch(`${Config.api_server}/alerts/${alert_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: data
+            });
+
+            if (res.status === 401){
+                return;
+            }
+
+            if(res.status !== 200) {
+                return
+            }
+
+            const resdata = await res.json();
+
+            if (!resdata) {
+                return
+            }
+
+            if (resdata) {
+                dispatch(loadAlert(alert_id, resdata));
+                RootNavigation.navigate("Alerts", { screen: 'AlertsScreen' }, {});
+            };
+            
+
+            
+
+        } catch (err) {
+            console.log('[Error: Fetch single alert]', err);
+            RootNavigation.navigate('NetworkErrorScreen', {}, {})
+        } finally {
+            dispatch(alertIsLoading(false));
+        }
+}
+}

@@ -39,4 +39,7 @@ export default {
     selectLocation: '选择一个地点',
     editCoordinate: '编辑坐标',
     saveAndEditCoord: '储存及编辑坐标',
+    editAlert: "修改",
+    privacyPolicy: "私隐政策",
+
 };

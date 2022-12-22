@@ -6,6 +6,7 @@ import { RootState } from '../store/store';
 import { productIcons } from '../assets/images/mapping';
 // Components
 import CustomButton from './CustomButton';
+import EditButton from './EditButton';
 import ClickableItem from './Elements/ClickableItem';
 import CustomText from './Text/CustomText';
 import ViewFloorplan from './ViewFloorplan';
@@ -21,6 +22,11 @@ const AlertExpandableItem = (props: any) => {
     const thing = useSelector((state: RootState) => state.things.things).find(thing => thing.id === props.thing_id);
     const icon = useSelector((state: RootState) => state.icons.icons).find(icon => icon.id === thing?.icon_id);
     const location = useSelector((state: RootState) => state.locations.locations).find(location => location.id === thing?.location_id)
+
+    const alert = useSelector((state: RootState) => state.alerts.allAlerts).find(alert => alert.id === props.alert_id);
+
+
+
 
     const Row = (props: any) => {
         return (
@@ -89,9 +95,18 @@ const AlertExpandableItem = (props: any) => {
                     <View style={styles().detailsContainer}>
                         <Row label={t('common:model')} content={props.model} />
                         <Row label={t('common:code')} content={props.code} />
+
+                        <Row label={t('form:details')} content={alert?.details ? alert?.details : t('common:null') }/>
+                            
+                        {alert?.photo_url && 
+                        <View style={styles().row}>
+                            <View style={styles().photoContainer}>
+                                <Image style={styles().photo} source={{uri: alert?.photo_url }} />
+                            </View>
+                        </View>}
                     </View>
 
-                    {props.alert_type === 'alarm' && props.status === 'Set' &&
+                    {/* {props.alert_type === 'alarm' && props.status === 'Set' &&
                         <View style={styles().buttonContainer}>
                             <CustomButton
                                 style={styles().emergencyCallButton}
@@ -99,7 +114,7 @@ const AlertExpandableItem = (props: any) => {
                                 <Text style={styles().emergencyCallButtonText}>{t('buttons:emergencyCall')}</Text>
                             </CustomButton>
                         </View>
-                    }
+                    } */}
 
                     <View>
                         <ViewFloorplan
@@ -113,11 +128,21 @@ const AlertExpandableItem = (props: any) => {
 
                     <View style={styles().buttonContainer}>
                         <CustomButton
+                        style={{width: 150}}
                             onPress={() => {
                                 props.navigation.navigate('ThingDetailsScreen', { id: thing?.id })
                             }}>
                             {t('buttons:viewDevice')}
                         </CustomButton>
+
+                        <EditButton
+                            style={{width: 150}}    
+                            onPress={() => {
+                                props.navigation.navigate('EditAlertScreen', { alert: alert })
+                            }}>
+                            {t('buttons:editAlert')}
+                        </EditButton>
+
                     </View>
 
                 </View>}
@@ -210,7 +235,7 @@ const styles = (props?: any, props2?: any) => StyleSheet.create({
         width: '62%',
     },
     buttonContainer: {
-        width: '100%',
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
@@ -245,7 +270,19 @@ const styles = (props?: any, props2?: any) => StyleSheet.create({
         //fontSize: 20,
         fontWeight: 'bold',
         paddingLeft: 5,
-    }
+    },
+    photo: {
+        flex:1,
+        height: 300, 
+        resizeMode: 'contain', 
+        backgroundColor: '#d9d9d9'
+    },
+    photoContainer: {
+        flex:1,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderStyle: 'dotted',
+    },
 });
 export default AlertExpandableItem;
 

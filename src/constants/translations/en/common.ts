@@ -73,4 +73,22 @@ export default {
      pm10: 'PM10',
      pm2_5: 'PM2.5',
      tvoc: 'TVOC',
+
+     photo: 'Photo',
+
+     privacyPolicy:'Privacy Policy',
+     purposeOfCollectionOfPersonalData: 'Purpose of Collection of Personal Data',
+     collectionOfPersonalData: 'Collection of Personal Data',
+     disclosureOrTransferOfData: 'Disclosure or Transfer od Data',
+     cookiesAndLogFiles: 'Cookies and Log Files',
+     googleAnalytics: "Google Analytics",
+     linksToOtherWebsitesOrApplications: "Links to Other Websites / Applications",
+     security: "Security",
+     accessToOrRequestForCorrectionOfData: "Access to or request for correction of data",
+     retentionOfPersonalData: "Retention of Personal Data",
+     rightsApplicableToEuUsers: "Rights Applicable to EU Users",
+     changesInThisPrivacyPolicy: "Changes in this Privacy Policy",
+     inconsistency: "Inconsistency",
+     enquiries: "Enquiries",
+     map: "Map",
 };

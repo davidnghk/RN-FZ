@@ -6,6 +6,7 @@ export default {
     phoneNumber: '电话号码',
     nameOfDevice: '装置的名称',
     pressToUploadFloorPlan: '轻触上载图片',
+    pressToUploadAlertPhoto: '上载图片',
     email: '电邮',
     password: '密码',
     currentPassword: '目前密码',
@@ -16,4 +17,6 @@ export default {
     uploadFloorplan: '上载平面图',
     forgotPassword: '忘记密码 ?',
     takePhoto: '拍照',
+    details: '详情',
+    uploadAlertPhoto: '上载图片',
 };

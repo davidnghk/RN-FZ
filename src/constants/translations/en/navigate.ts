@@ -27,4 +27,6 @@ export default {
     checkYourEmail: 'Check Your Email',
     locations: "Locations",
     person: "Person",
+    editAlert: "Edit Alert Detail",
+    privacyPolicy: "Privacy Policy",
 };

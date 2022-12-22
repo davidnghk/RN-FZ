@@ -28,4 +28,6 @@ export default {
     checkYourEmail: '查看你的郵件',
     locations: '地點',
     person: "人員",
+    editAlert: "修改警報詳情",
+    privacyPolicy: "私隱政策",
 };

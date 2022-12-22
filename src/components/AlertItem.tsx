@@ -24,7 +24,6 @@ const AlertItem = (props: Alert) => {
     const { t } = useTranslation();
     const thing = useSelector((state: RootState) => state.things.things).find(thing => thing.id === props.thing_id);
 
-
     return (
 
         <ClickableItem style={{ ...styles(props.status, props.alert_type).item }} onPress={props.onPress}>

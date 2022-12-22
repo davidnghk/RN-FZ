@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import COLOR from '../../constants/Theme/color';
+import { Image } from 'react-native';
 
 // Stacks
 import { UserStackScreen } from './UserStack';
@@ -29,7 +30,7 @@ const AuthTabs = (props: any) => {
                 iconName = 'home';
                 break;
             case 'Alerts':
-                iconName = 'flame';
+                return <Image style={{ height: 25, width: 25, tintColor: color}} source={require('../../assets/images/components/siren-removebg.png')} />
                 break;
             case 'Person':
                 iconName = 'people';

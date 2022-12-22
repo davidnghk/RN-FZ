@@ -24,7 +24,7 @@ const ProfileScreen = (props: any) => {
     const user = useSelector((state: RootState) => state.user.user);
     const account = useSelector((state: RootState) => state.account.account);
     const accountId = user.default_account_id;
-
+    
     useEffect(() => {
         dispatch(UserActions.getUserInfo());
 
@@ -53,24 +53,24 @@ const ProfileScreen = (props: any) => {
 
                     {user.avatar_url == null ?
                         <Image style={styles.image} source={require('../../assets/images/default_user_avatar.png')} /> :
-                        <Image style={styles.image} source={{ uri: user.avatar_url }} />
+                        <Image style={styles.image} source={{ uri: user?.avatar_url }} />
                     }
 
                 </View>
 
                 <View style={styles.row}>
                     <CustomText style={styles.label}>{t('common:user')}: </CustomText>
-                    <CustomText style={styles.content}>{user.name}</CustomText>
+                    <CustomText style={styles.content}>{user?.name}</CustomText>
                 </View>
 
                 <View style={styles.row}>
                     <CustomText style={styles.label}>{t('common:account')}: </CustomText>
-                    <CustomText style={styles.content}>{account.name}</CustomText>
+                    <CustomText style={styles.content}>{account?.name}</CustomText>
                 </View>
 
                 <View style={styles.row}>
                     <CustomText style={styles.label}>{t('common:email')}: </CustomText>
-                    <CustomText style={styles.content}>{user.email == null ? 'N/A' : user.email}</CustomText>
+                    <CustomText style={styles.content}>{user?.email == null ? 'N/A' : user?.email}</CustomText>
                 </View>
 
                 {/* <View style={styles.row}>
@@ -81,16 +81,15 @@ const ProfileScreen = (props: any) => {
             </Card>
 
 
-            {account.modules.includes("AIR") &&
-                <UserButton onPress={() => { props.navigation.navigate('AmbienceDeviceListScreen') }}>{t('buttons:ambience')}</UserButton>
-            }
-
+            
+            <UserButton onPress={() => { props.navigation.navigate('AmbienceDeviceListScreen') }}>{t('buttons:ambience')}</UserButton>
             <UserButton onPress={() => { props.navigation.navigate('LanguageSettingScreen') }}>{t('buttons:languageSetting')}</UserButton>
             <UserButton onPress={() => { props.navigation.navigate('FontSizeSettingScreen') }}>{t('buttons:fontSizeSetting')}</UserButton>
             {/* <UserButton onPress={() => { dispatch(AuthActions.setTutorialSeen(false)); }}>{t('buttons:appTutorial')}</UserButton> */}
             <UserButton onPress={() => { props.navigation.navigate('AccountMemberListScreen') }}>{t('buttons:accountMember')}</UserButton>
             <UserButton onPress={() => { props.navigation.navigate('EmergencyContactsScreen') }}>{t('buttons:emergencyContact')}</UserButton>
             <UserButton onPress={() => { props.navigation.navigate('VideoGuideScreen') }}>{t('buttons:userGuide')}</UserButton>
+            <UserButton onPress={() => { props.navigation.navigate('PrivacyPolicyScreen')}}>{t('buttons:privacyPolicy')}</UserButton>
             {/* <UserButton style={{ backgroundColor: 'red' }} onPress={() => { dialCall('+852999') }}>{t('buttons:emergencyCall')}</UserButton> */}
             <UserButton onPress={() => {
                 [

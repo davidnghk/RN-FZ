@@ -88,6 +88,7 @@ const AlertsScreen = (props: any) => {
                 code={itemData.item.thing_code}
                 thing_id={itemData.item.thing_id}
                 navigation={props.navigation}
+                alert_id={itemData.item.id}
             />
         )
     };

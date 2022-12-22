@@ -55,7 +55,7 @@ export function fetchThings() {
                 }
             });
 
-            // console.log("token", token)
+            console.log("token", token)
 
             if (res.status === 401) {
                 triggerLogout(res);
@@ -165,7 +165,7 @@ export function searchThing(eui: string) {
     };
 };
 
-export function updateDevice(thingId: number, name: string, locationId: number | null, xCoordinate: number | null, yCoordinate: number | null, action: string) {
+export function updateDevice(thingId: number, name: string, locationId: number | null, xCoordinate: number | null, yCoordinate: number | null, photoInserted: boolean | null, photo: any | null, action: string) {
     return async (dispatch: ThunkDispatch, getState: () => RootState) => {
         try {
 
@@ -184,6 +184,18 @@ export function updateDevice(thingId: number, name: string, locationId: number |
                 data.append('location_id', locationId)
                 data.append('x_coordinate', xCoordinate);
                 data.append('y_coordinate', yCoordinate);
+
+                if(photoInserted){
+                    data.append('photo', {
+                        name: photo.fileName,
+                        uri: photo.uri,
+                        type: photo.type,
+                    })
+
+
+                }
+
+
                 return data;
             };
 

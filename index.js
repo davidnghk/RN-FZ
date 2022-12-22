@@ -11,8 +11,8 @@ import messaging from '@react-native-firebase/messaging';
 
 // Register background handler
 messaging().setBackgroundMessageHandler(async remoteMessage => {
-  //('Message handled in the background!', remoteMessage);
-  //console.log('Counter: ', remoteMessage.data.counter);
+  ('Message handled in the background!', remoteMessage);
+  console.log('Counter: ', remoteMessage.data.counter);
 
   // let counter = parseInt(remoteMessage.data.counter);
 
@@ -26,5 +26,7 @@ function HeadlessCheck({ isHeadless }) {
 
   return <App />;
 }
+
+
 
 AppRegistry.registerComponent(appName, () => HeadlessCheck);

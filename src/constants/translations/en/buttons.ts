@@ -39,5 +39,7 @@ export default {
     ambience: 'Ambience',
     selectLocation: 'Select a Location',
     editCoordinate: 'Edit Coordinate',
-    saveAndEditCoord: 'Save & Edit COORD'
+    saveAndEditCoord: 'Save & Edit COORD',
+    editAlert: "Edit",
+    privacyPolicy: "Privacy Policy",
 };

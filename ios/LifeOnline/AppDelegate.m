@@ -31,6 +31,8 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 
 @import GoogleMaps;
+@import UIKit;
+@import FirebaseCore;
 @implementation AppDelegate
 
 // Required for the register event.
@@ -62,11 +64,11 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
   [GMSServices provideAPIKey:@"AIzaSyD06xKUH8-PQPog1L2-wraIZIaKhJ3RtZo"];
   NSDictionary *appProperties = [RNFBMessagingModule addCustomPropsToUserProps:nil withLaunchOptions:launchOptions];
 
-  if ([FIRApp defaultApp] == nil) {
-    [FIRApp configure];
-  }
+//  if ([FIRApp defaultApp] == nil) {
+//    [FIRApp configure];
+//  }
 
-  // [FIRApp configure];
+  [FIRApp configure];
 
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
@@ -74,6 +76,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"LifeOnline"
                                             initialProperties:appProperties];

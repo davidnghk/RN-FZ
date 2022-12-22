@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Platform, ScrollView, TouchableOpacity, Text, StatusBar, ImageBackground, Image, FlatList, RefreshControl } from 'react-native';
+import { View, StyleSheet, Platform, ScrollView, TouchableOpacity, Text, StatusBar, ImageBackground, Image, FlatList, RefreshControl ,Alert } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -7,9 +7,11 @@ import { RootState } from '../../store/store';
 import messaging from '@react-native-firebase/messaging';
 import { VictoryPie } from "victory-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import COLOR from '../../constants/Theme/color';
 import { Alert as AlertInterface } from '../../store/reducers/alerts'
 import { productIcons } from '../../assets/images/mapping';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
 // Components & Screens
 import CustomText from '../../components/Text/CustomText';
@@ -28,6 +30,7 @@ import { EnumListItems } from '../../utils/models'
 import * as fcmManager from '../../utils/fcmManager';
 import { notificationManager } from '../../utils/NotificationManager'
 import { getTranslateType, formatDateTime, fireSensorGetColorFromStatusOrWarning } from '../../utils/resuableMethods';
+import alert from '../../constants/translations/zh-CN/alert';
 
 
 const HomeScreen = (props: any) => {
@@ -58,14 +61,60 @@ const HomeScreen = (props: any) => {
     // const defaultMasterRingData = [{ x: 'Drill', y: 0 }, { x: 'Alarm', y: 0 }, { x: 'Quiet', y: 0 }, { x: 'Offline', y: 100 }]
     const defaultMasterRingData = [{ x: 'Normal', y: 0}, { x: 'Alarm', y: 0 }]
     const [masterRingData, setMasterRingData] = useState(defaultMasterRingData);
+    const [pinClick, setPinClick] = useState(0);
 
     let emptyAlert: AlertInterface[] = [];
     let masterRingList: EnumListItems = [];
 
     const [firstThreeAlerts, setFirstThreeAlerts] = useState(emptyAlert);
 
+    let mapPins = []
+    let sumLonOfPin = 0;
+    let sumLatOfPin = 0;
+
+    things.forEach( thing => {
+
+
+        if( thing?.latitude && thing?.longitude) {
+        mapPins.push({
+            id: thing.id,
+            name: thing.name,
+            latitude: thing.latitude,
+            longitude: thing.longitude,
+            status: thing.onoff_status,
+        })
+    }
+    })
+
+    mapPins.forEach( pin => {
+
+        sumLonOfPin += parseFloat(pin.longitude)
+        sumLatOfPin += parseFloat(pin.latitude)
+    })
+
+    let centerLon = sumLonOfPin/mapPins.length
+    let centerLat = sumLatOfPin/mapPins.length
+
+    useEffect(() => {
+        mapPins = []
+        things.forEach( thing => {
+
+        if( thing?.latitude && thing?.longitude) {
+        mapPins.push({
+            id: thing.id,
+            name: thing.name,
+            latitude: thing.latitude,
+            longitude: thing.longitude,
+            status: thing.onoff_status,
+        })
+        }
+    })
+    })
+
+
     // Fetch alerts, things, icons, and font size when app launch
     useEffect(() => {
+        
         dispatch(AlertsActions.fetchAllAlerts());
         dispatch(ThingsActions.fetchThings());
         dispatch(fetchIcons());
@@ -117,10 +166,15 @@ const HomeScreen = (props: any) => {
         setMasterRingData(masterRingList)
     }, [things])
 
+    useEffect(() => {
+        fcmManager.notificationListener()
+    })
+
+
     /* ********** PUSH NOTIFICATION HANDLING BEGIN ********** */
     /* (1) Ask for user permission for receive notification + getting FCM Token */
     useEffect(() => {
-
+            
         if (!user.id) {
             return
         };
@@ -150,10 +204,13 @@ const HomeScreen = (props: any) => {
             }
         });
 
+        
+
     }, [userId]);
 
     /* (2) Push Notification Handling */
     useEffect(() => {
+        
         const unsubscribe = messaging().onMessage(async remoteMessage => {
 
             // console.log('A new FCM message arrived!, remote message: ', remoteMessage)
@@ -226,8 +283,7 @@ const HomeScreen = (props: any) => {
     const RecentAlertItem = (props: any) => {
         return (
             <TouchableOpacity style={styles.recentAlertItem} onPress={() => { navigation.navigate('AlertDetailsScreen', { id: props.id }) }}>
-                <Ionicons name='flame' color='red' size={25} style={{ width: 26 - 32 }} />
-
+                <Image style={{ height: 25, width: 25 ,tintColor: "red"}} source={require('../../assets/images/components/siren-removebg.png')} />
                 <View style={{ width: '68%', marginLeft: 10 }}>
                     <CustomText style={{ width: '100%' }} >{props.name}</CustomText>
                     <CustomText style={{ width: '100%' }}>{formatDateTime(props.startDatetime)}</CustomText>
@@ -237,6 +293,9 @@ const HomeScreen = (props: any) => {
                     <CustomText style={{ width: '100%' }} ellipsizeMode='tail' numberOfLines={1} >{getTranslateType(props.alertType)}</CustomText>
 
                 </View>
+
+
+                
             </TouchableOpacity>
         )
     };
@@ -277,6 +336,7 @@ const HomeScreen = (props: any) => {
     const onRefresh = () => {
         dispatch(AlertsActions.fetchAllAlerts());
         dispatch(ThingsActions.fetchThings());
+
     }
 
     return (
@@ -404,6 +464,52 @@ const HomeScreen = (props: any) => {
                         </View>
                     </View>
 
+                    {/* Map */}
+                    
+
+                    <View style={styles.titleContainer}>
+                        <CustomText style={styles.rowTitle}>{t('common:map')}</CustomText>
+                    </View>
+                    <View style={styles.map}>
+                    <MapView
+                        style={{height:400, width: '100%', marginTop: 15}}
+                        provider= {PROVIDER_GOOGLE}
+                        showsUserLocation
+                        followsUserLocation={true}
+                        zoomControlEnabled={true}
+                        zoomEnabled={true}
+                        initialRegion={{
+                            latitude: centerLat,
+                            longitude: centerLon,
+                            latitudeDelta: 0.1,
+                            longitudeDelta: 0.1,
+                            
+
+                        }}
+                    >
+                        
+                        {mapPins.map((r) => (
+
+                                <Marker
+                                    coordinate= {{
+                                        latitude: parseFloat(r?.latitude), 
+                                        longitude: parseFloat(r?.longitude) 
+                                    }} 
+                                    title={r?.name}
+                                    pinColor={r.status.toLowerCase() == "alarm" ? "red" : r.status.toLowerCase() == "normal" ? "green" : "violet"}
+                                    key={`${r.id}${Date.now()}`}
+                                    onCalloutPress={() => 
+                                        navigation.navigate('ThingDetailsScreen', {
+                                        id: r.id
+                                    })}
+                                />
+                        )
+                        )
+                        }
+
+                    </MapView>
+                    </View>
+
                     {/* ********** (3) Recent Alerts Row ********** */}
 
                     <View style={styles.titleContainer}>
@@ -419,6 +525,9 @@ const HomeScreen = (props: any) => {
                         })}
                     </View>
 
+
+
+                    
 
                     {/* ********** Bottom Empty Space ********** */}
 
@@ -538,6 +647,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
     },
+    map: {
+        flexDirection: 'row',
+        width: rowWidth,
+    }
 });
 
 export default HomeScreen;

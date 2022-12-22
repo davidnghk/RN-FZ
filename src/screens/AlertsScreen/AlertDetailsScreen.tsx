@@ -5,6 +5,7 @@ import { RootState } from '../../store/store';
 import { productIcons } from '../../assets/images/mapping';
 import ViewFloorplan from '../../components/ViewFloorplan';
 import CustomButton from '../../components/CustomButton';
+import EditButton from '../../components/EditButton';
 import { useTranslation } from 'react-i18next';
 import Card from '../../components/Elements/Card';
 import CustomText from '../../components/Text/CustomText';
@@ -36,8 +37,17 @@ const AlertDetailsScreen = ({ route, navigation }) => {
     const isLoading = useSelector((state: RootState) => state.alerts.isLoading);
 
     const onRefresh = () => {
-        dispatch(fetchAlert(id));
-    }
+         dispatch(fetchAlert(id));
+     }
+
+    const Label = (props: any) => {
+        return (
+            <CustomText style={{ ...{ fontWeight: 'bold', width: '35%' }, ...props.style }}>
+                {props.children}
+            </CustomText>
+        )
+    };
+    
 
     if (!thing) {
         return (
@@ -99,9 +109,17 @@ const AlertDetailsScreen = ({ route, navigation }) => {
                         <Row label={t('common:startTime')} content={formatDateTime(alertDetails?.start_datetime)} />
                         <Row label={t('common:endTime')} content={alertDetails?.end_datetime ? formatDateTime(alertDetails?.end_datetime) : t('common:null')} />
                         {/* <Row label={t('common:location')} content={`Block 01 ( ${thing?.x_coordinate}, ${thing?.y_coordinate} )`} /> */}
+                        <Row label={t('form:details')} content={alertDetails?.details ? alertDetails?.details : t('common:null') }/>
+                            
+                        {alertDetails?.photo_url && 
+                        <View style={styles.row}>
+                            <View style={styles.photoContainer}>
+                                <Image style={styles.photo} source={{uri: alertDetails?.photo_url }} />
+                            </View>
+                        </View>}
                     </View>
 
-                    {alertDetails?.alert_type === 'alarm' && alertDetails.status === 'Set' &&
+                    {/* {alertDetails?.alert_type === 'alarm' && alertDetails.status === 'Set' &&
                         <View style={styles.buttonContainer}>
                             <CustomButton
                                 style={styles.emergencyCallButton}
@@ -109,7 +127,7 @@ const AlertDetailsScreen = ({ route, navigation }) => {
                                 <Text style={styles.emergencyCallButtonText}>{t('buttons:emergencyCall')}</Text>
                             </CustomButton>
                         </View>
-                    }
+                    } */}
 
                     <View>
                         <ViewFloorplan
@@ -123,6 +141,7 @@ const AlertDetailsScreen = ({ route, navigation }) => {
 
                     <View style={styles.buttonContainer}>
                         <CustomButton
+                            style={{width: 150}}
                             onPress={() => {
                                 navigation.navigate('ThingDetailsScreen', { id: alertDetails?.thing_id })
                                 // navigation.navigate("Devices", {
@@ -133,6 +152,14 @@ const AlertDetailsScreen = ({ route, navigation }) => {
                             }}>
                             {t('buttons:viewDevice')}
                         </CustomButton>
+
+                        <EditButton
+                            style={{width: 150}}    
+                            onPress={() => {
+                                navigation.navigate('EditAlertScreen', { alert: alertDetails })
+                            }}>
+                            {t('buttons:editAlert')}
+                        </EditButton>
                     </View>
 
                 </Card>
@@ -166,6 +193,18 @@ const styles = StyleSheet.create({
         height: 80,
         resizeMode: 'contain',
     },
+    photo: {
+        flex:1,
+        height: 300, 
+        resizeMode: 'contain', 
+        backgroundColor: '#d9d9d9'
+    },
+    photoContainer: {
+        flex:1,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderStyle: 'dotted',
+    },
     detailsContainer: {
         marginTop: 20,
         paddingHorizontal: 5,
@@ -187,10 +226,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     buttonContainer: {
-        width: '100%',
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 10,
+        marginBottom: 10,
     },
     emergencyCallButton: {
         backgroundColor: 'red',

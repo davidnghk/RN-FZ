@@ -1,45 +1,37 @@
 {
   "project_info": {
-    "project_number": "989257849097",
-    "project_id": "firewatcher-demo",
-    "storage_bucket": "firewatcher-demo.appspot.com"
+    "project_number": "925983179268",
+    "project_id": "lifeonline-366508",
+    "storage_bucket": "lifeonline-366508.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:989257849097:android:285db92732fd56df3f1bd8",
+        "mobilesdk_app_id": "1:925983179268:android:2adabb1485fe7a3b262b51",
         "android_client_info": {
           "package_name": "cloud.letsapp.lifeonline"
         }
       },
       "oauth_client": [
         {
-          "client_id": "989257849097-p1omj4ce4k12va9r1r3tv0idpqh5nvt1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "cloud.letsapp.lifeonline",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "989257849097-kg5am65db5mg2lgncd34en4n398ees8u.apps.googleusercontent.com",
+          "client_id": "925983179268-kbcaovur8qo14jplijmfob8s20krnqjt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCiMXIYg3_ikka5mIDskpSracRemUpUSTI"
+          "current_key": "AIzaSyCdwpTF_a9r-VXAt8NCIgveu9xucq1iu4U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "989257849097-kg5am65db5mg2lgncd34en4n398ees8u.apps.googleusercontent.com",
+              "client_id": "925983179268-kbcaovur8qo14jplijmfob8s20krnqjt.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "989257849097-suhlh0oh8ekpve854j54066c2oks6qrb.apps.googleusercontent.com",
+              "client_id": "925983179268-sui7enqk56d8h9qlope2ct3m0jnt9gut.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "cloud.letsapp.lifeonline"

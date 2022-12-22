@@ -17,7 +17,9 @@ const AddDeviceCompletedScreen = (props: any) => {
 
             <View style={styles.imageContainer}>
 
-                <Image style={styles.image} source={require('../../assets/images/product_icons/SITERWELL-GS529A.jpeg')} />
+                {/* <Image style={styles.image} source={require('../../assets/images/product_icons/SITERWELL-GS529A.jpeg')} /> */}
+                <Image style={styles.image} source={require('../../assets/images/company_logo/personstatus.jpeg')} />
+
 
                 <View style={styles.checkContainer}>
                     <Image style={styles.image} source={require('../../assets/images/components/GreenCheck.png')} />
@@ -57,6 +59,7 @@ const styles = StyleSheet.create({
     image: {
         width: '90%',
         height: '90%',
+        resizeMode: 'contain',
     },
     checkContainer: {
         height: 50,
