@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, View, ScrollView, TouchableOpacity, RefreshControl } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { useFocusEffect } from "@react-navigation/native";
@@ -14,6 +14,9 @@ import ViewMasterFloorplan from "../../components/ViewMasterFloorplan";
 import Loader from "../../components/Loader";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import COLOR from '../../constants/Theme/color';
+import { fetchThings } from '../../store/actions/things';
+
+
 
 const LocationDetailsScreen = ({ route, navigation }: any,) => {
 
@@ -23,6 +26,17 @@ const LocationDetailsScreen = ({ route, navigation }: any,) => {
     const { id } = route.params;
     const location = useSelector((state: RootState) => state.locations.location)
     const isLoading = useSelector((state: RootState) => state.locations.isLoading);
+    const things = useSelector((state: RootState) => state.things.things);
+    const thingsList = things;
+
+    thingsList.sort((a,b) => a.onoff_status.toLowerCase() > b.onoff_status.toLowerCase())
+
+
+
+    const onRefresh = () => {
+        dispatch(fetchLocation(id));
+        dispatch(fetchThings())
+    }
 
     useFocusEffect(
         React.useCallback(() => {
@@ -33,10 +47,18 @@ const LocationDetailsScreen = ({ route, navigation }: any,) => {
 
     useEffect(() => {
         dispatch(fetchLocation(id));
+        dispatch(fetchThings())
     }, []);
 
     return (
-        <ScrollView style={styles.screen}>
+
+        <ScrollView style={styles.screen}
+        refreshControl={
+            <RefreshControl
+                refreshing={isLoading}
+                onRefresh={onRefresh}
+            />
+        }>
 
             {isLoading && <Loader />}
 
@@ -62,12 +84,20 @@ const LocationDetailsScreen = ({ route, navigation }: any,) => {
                     </View>
                 </View>
 
-                {location.floorplan &&
+                { location.floorplan &&
                     <ViewMasterFloorplan
+                        key ={`${location.things.id}${Date.now()}`}
                         id={id}
-                        things={location?.things}
+                        things={things}
                         photoUrl={location?.floorplan}
                         navigation={navigation}
+                        refreshControl={
+                            <RefreshControl
+                                //refresh control used for the Pull to Refresh
+                                refreshing={isLoading}
+                                onRefresh={onRefresh}
+                            />
+                        }
                     />
                 }
 
@@ -101,9 +131,12 @@ const LocationDetailsScreen = ({ route, navigation }: any,) => {
                     </View>
 
                     <View >
-                        {location.things.map(thing => {
+                        {things.map(thing => {
+
                             return (
-                                <ThingItem key={thing.id}
+                                <ThingItem 
+                                    key={`${thing.id}${Date.now()}`}
+                                    id={thing.id}
                                     name={thing.name}
                                     thing_code={thing.code}
                                     alertStatus={thing.state}
@@ -121,7 +154,15 @@ const LocationDetailsScreen = ({ route, navigation }: any,) => {
                                             initial: false
                                         })
                                     }}
+                                    refreshControl={
+                                        <RefreshControl
+                                            //refresh control used for the Pull to Refresh
+                                            refreshing={isLoading}
+                                            onRefresh={onRefresh}
+                                        />
+                                    }
                                 />
+                                
                             )
                         })}
 

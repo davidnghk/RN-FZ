@@ -38,6 +38,7 @@ const LocationsScreen = (props: any) => {
                         id: itemData.item.id
                     })
                 }}
+                
             />
         )
     }

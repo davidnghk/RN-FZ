@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { View, StyleSheet, ImageBackground, Dimensions, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Loader from './Loader';
+import CustomText from './Text/CustomText';
 
 const ViewMasterFloorplan = (props: any) => {
 
@@ -28,6 +29,8 @@ const ViewMasterFloorplan = (props: any) => {
         }
 
     }, [photoUrl]);
+
+
 
 
     // To get the width of the image container
@@ -84,7 +87,7 @@ const ViewMasterFloorplan = (props: any) => {
                 >
 
                     {props.things.map((thing: { id: React.Key | null | undefined; onoff_status: string; y_coordinate: number; x_coordinate: number; }) => (
-                        <View key={thing.id}>
+                        <View key={`${thing.id}${Date.now()}`}>
                             {thing.onoff_status === 'drill' || thing.onoff_status === 'alarm' ?
                                 <TouchableOpacity
                                     style={
@@ -94,38 +97,75 @@ const ViewMasterFloorplan = (props: any) => {
                                             left: calCoordinate(thing.x_coordinate) - 16 || 0,
                                         }}
                                     onPress={() => {
-                                        props.navigation.navigate("Devices", {
-                                            screen: 'ThingDetailsScreen',
-                                            params: { id: thing.id },
-                                            initial: false
-                                        });
+                                        props.navigation.navigate('ThingDetailsScreen', {
+                                            id: thing.id
+                                        })
                                     }}>
-                                    <Ionicons name={"flame"} color={"red"} size={32} />
+                                        <View style={{
+                                        right:5,
+                                        bottom:40,
+                                        
+                                    }}>
+                                        <TouchableOpacity
+                                            style={{
+                                                backgroundColor: "white",
+                                                borderColor: "black",
+                                                borderStyle: "solid",
+                                                borderWidth: 1,
+
+                                            }}>
+                                            <CustomText>{thing.name}</CustomText>
+
+                                        </TouchableOpacity> 
+                                    <Ionicons name={"location-sharp"} color={"red"} size={32}>
+                                    </Ionicons>
+                                    </View>
                                 </TouchableOpacity>
 
                                 :
-
+                                    
                                 <TouchableOpacity
                                     style={[
                                         styles.point,
-                                        {
-                                            position: 'absolute',
-                                            top: calCoordinate(thing.y_coordinate) - (pointSizer(winWidth) / 2) || 0,
-                                            left: calCoordinate(thing.x_coordinate) - (pointSizer(winWidth) / 2) || 0,
-                                            backgroundColor: 'blue',
-                                            width: pointSizer(winWidth),
-                                            height: pointSizer(winWidth),
-                                            opacity: thing.y_coordinate ? 100 : 0,
+                                         {
+                                           position: 'absolute',
+                                           top: calCoordinate(thing.y_coordinate) - (pointSizer(winWidth) / 2) || 0,
+                                           left: calCoordinate(thing.x_coordinate) - (pointSizer(winWidth) / 2) || 0,
+                                            //  backgroundColor: 'blue',
+                                            //  width: pointSizer(winWidth),
+                                            //  height: pointSizer(winWidth),
+                                             opacity: thing.y_coordinate ? 100 : 0,
                                         }
                                     ]}
+
+                                    
+
                                     onPress={() => {
-                                        props.navigation.navigate("Devices", {
-                                            screen: 'ThingDetailsScreen',
-                                            params: { id: thing.id },
-                                            initial: false
-                                        });
+                                            props.navigation.navigate('ThingDetailsScreen', {
+                                                id: thing.id
+                                            })
                                     }}
                                 >
+                                    <View style={{
+                                        right:5,
+                                        bottom:40,
+                                        
+                                    }}>
+                                        <TouchableOpacity
+                                            style={{
+                                                backgroundColor: "white",
+                                                borderColor: "black",
+                                                borderStyle: "solid",
+                                                borderWidth: 1,
+
+                                            }}>
+                                            <CustomText>{thing.name}</CustomText>
+
+                                        </TouchableOpacity> 
+                                    <Ionicons name={"location-sharp"} color={thing.onoff_status == "Normal" ? "green" : "purple"} size={32}>
+                                    </Ionicons>
+                                    </View>
+                                    
                                 </TouchableOpacity>
                             }
                         </View>

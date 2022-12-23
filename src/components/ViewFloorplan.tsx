@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, StyleSheet, ImageBackground, Dimensions, } from 'react-native';
+import { View, StyleSheet, ImageBackground, Dimensions, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Loader from './Loader';
+import CustomText from './Text/CustomText';
 
 const ViewFloorplan = (props: any) => {
 
@@ -62,10 +63,10 @@ const ViewFloorplan = (props: any) => {
 
         return (
 
-            <Ionicons name={"flame"} color={"red"} size={32} style={
+            <Ionicons name={"location-sharp"} color={"red"} size={32} style={
                 {
                     position: 'absolute',
-                    top: props.y_coordinate ? calCoordinate(props.y_coordinate) - 16 : 0,
+                    top: props.y_coordinate ? calCoordinate(props.y_coordinate) - 28 : 0,
                     left: calCoordinate(props.x_coordinate) - 16 || 0,
                     opacity: showPoint ? 0 : 100,
                 }
@@ -114,12 +115,21 @@ const ViewFloorplan = (props: any) => {
                                 position: 'absolute',
                                 top: calCoordinate(props.y_coordinate) - (pointSizer(winWidth) / 2) || 0,
                                 left: calCoordinate(props.x_coordinate) - (pointSizer(winWidth) / 2) || 0,
-                                backgroundColor: 'blue',
-                                width: pointSizer(winWidth),
-                                height: pointSizer(winWidth),
+                                // backgroundColor: 'green',
+                                // width: pointSizer(winWidth),
+                                // height: pointSizer(winWidth),
                                 opacity: props.y_coordinate ? 100 : 0
                             }
                         ]}>
+                             <View style={{
+                                        right:5,
+                                        bottom:20,
+                                        
+                                    }}>
+
+                                    <Ionicons name={"location-sharp"} color={props.onOffStatus == "Normal" ? "green" : "purple"} size={32}>
+                                    </Ionicons>
+                                    </View>
                         </View>
                     }
 

@@ -13,6 +13,7 @@ import HeaderBackButton from '../../components/HeaderBackButton';
 import LocationsScreen from '../../screens/LocationsScreen/LocationsScreen';
 import LocationDetailsScreen from '../../screens/LocationsScreen/LocationDetailsScreen';
 import EditLocationScreen from '../../screens/LocationsScreen/EditLocationScreen';
+import ThingDetailsScreen from '../../screens/ThingsScreens/ThingDetailsScreen';
 
 const LocationStack = createStackNavigator();
 
@@ -86,6 +87,13 @@ export const LocationStackScreen = (props: any) => {
              <LocationStack.Screen name="EditLocationScreen" component={EditLocationScreen} options={
                 {
                     headerTitle: t('navigate:editInfo'),
+                }
+            } />
+
+
+            <LocationStack.Screen name="ThingDetailsScreen" component={ThingDetailsScreen} options={
+                {
+                    headerTitle: t('navigate:details'),
                 }
             } />
 

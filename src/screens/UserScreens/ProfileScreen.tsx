@@ -82,7 +82,7 @@ const ProfileScreen = (props: any) => {
 
 
             
-            <UserButton onPress={() => { props.navigation.navigate('AmbienceDeviceListScreen') }}>{t('buttons:ambience')}</UserButton>
+            {/* <UserButton onPress={() => { props.navigation.navigate('AmbienceDeviceListScreen') }}>{t('buttons:ambience')}</UserButton> */}
             <UserButton onPress={() => { props.navigation.navigate('LanguageSettingScreen') }}>{t('buttons:languageSetting')}</UserButton>
             <UserButton onPress={() => { props.navigation.navigate('FontSizeSettingScreen') }}>{t('buttons:fontSizeSetting')}</UserButton>
             {/* <UserButton onPress={() => { dispatch(AuthActions.setTutorialSeen(false)); }}>{t('buttons:appTutorial')}</UserButton> */}

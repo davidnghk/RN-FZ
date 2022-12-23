@@ -114,12 +114,13 @@ const ThingDetailsCard = (props: any) => {
                         // onMapLoaded={() => console.log("Map is ready")}
                     >
                         <Marker 
+                            key={`${thingDetails.id}${Date.now()}`}
                             coordinate= {{
                                 latitude: parseFloat(thingDetails?.latitude), 
                                 longitude: parseFloat(thingDetails?.longitude) 
                             }} 
                             title={"location"}
-                            pinColor={"red"}/>
+                            pinColor={thingDetails.onoff_status.toLowerCase() == "alarm" ? "red" : thingDetails.onoff_status.toLowerCase() == "normal"? "green" : "purple"}/>
                     </MapView>
                 </View> }
 
