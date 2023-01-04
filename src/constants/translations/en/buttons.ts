@@ -1,6 +1,6 @@
 export default {
     viewDetail: 'View Detail',
-    viewDevice: 'View Peron',
+    viewDevice: 'View',
     scanDevice: 'Add Person',
     scanAgain: 'Scan Again',
     languageSetting: 'Language Setting',
@@ -42,4 +42,5 @@ export default {
     saveAndEditCoord: 'Save & Edit COORD',
     editAlert: "Edit",
     privacyPolicy: "Privacy Policy",
+    generatePdf: "Report",
 };

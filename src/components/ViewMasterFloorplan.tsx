@@ -162,7 +162,7 @@ const ViewMasterFloorplan = (props: any) => {
                                             <CustomText>{thing.name}</CustomText>
 
                                         </TouchableOpacity> 
-                                    <Ionicons name={"location-sharp"} color={thing.onoff_status == "Normal" ? "green" : "purple"} size={32}>
+                                    <Ionicons name={"location-sharp"} color={thing.onoff_status == "Normal" ? "green" : "blue"} size={32}>
                                     </Ionicons>
                                     </View>
                                     

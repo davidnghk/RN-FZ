@@ -472,7 +472,7 @@ const HomeScreen = (props: any) => {
                     </View>
                     <View style={styles.map}>
                     <MapView
-                        style={{height:400, width: '100%', marginTop: 15}}
+                        style={{height:300, width: '100%', marginTop: 15}}
                         provider= {PROVIDER_GOOGLE}
                         showsUserLocation
                         followsUserLocation={true}
@@ -496,7 +496,7 @@ const HomeScreen = (props: any) => {
                                         longitude: parseFloat(r?.longitude) 
                                     }} 
                                     title={r?.name}
-                                    pinColor={r.status.toLowerCase() == "alarm" ? "red" : r.status.toLowerCase() == "normal" ? "green" : "violet"}
+                                    pinColor={r.status.toLowerCase() == "alarm" ? "red" : r.status.toLowerCase() == "normal" ? "green" : "blue"}
                                     key={`${r.id}${Date.now()}`}
                                     onCalloutPress={() => 
                                         navigation.navigate('ThingDetailsScreen', {
@@ -648,8 +648,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     map: {
+
         flexDirection: 'row',
-        width: rowWidth,
+        width: "83%",
     }
 });
 

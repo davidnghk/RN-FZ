@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, ImageBackground, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../components/CustomButton';
 import LanguageSelectorButtons from '../../components/LanguageSelectorButtons';
 import MessagePopUp from '../../components/MessagePopUp';
+import CustomTitle from '../../components/Text/CustomTitle';
 
 import { closeModal } from '../../store/actions/modal';
 import { RootState } from '../../store/store';
@@ -31,7 +32,8 @@ const LandingScreen = (props: any) => {
 
     return (
         <View style={styles.screen}>
-
+            <ImageBackground source={require('../../assets/images/company_logo/LifeOnlineLandingBackground.png')} resizeMode="cover" blurRadius={1} style={styles.backgroundImage}>
+            <Text style={styles.title}>{"LifeOnline"}</Text>
             {isForceLogoutPopUp && forceLogoutMsg === 'New Device login!' &&
                 <MessagePopUp
                     visible={isForceLogoutPopUp}
@@ -77,14 +79,17 @@ const LandingScreen = (props: any) => {
             }
 
             <View style={styles.imageContainer}>
+                
                 <Image style={styles.image} source={require('../../assets/images/company_logo/SmartWatchLogo.png')} />
             </View>
             <View>
                 <CustomButton onPress={() => { props.navigation.navigate('LoginScreen') }} >{t('buttons:login')}</CustomButton>
                 <CustomButton onPress={() => { props.navigation.navigate('SignUpScreen') }} >{t('buttons:signup')}</CustomButton>
             </View>
-
+            </ImageBackground>
             <LanguageSelectorButtons />
+
+            
         </View>
     )
 };
@@ -105,6 +110,19 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    backgroundImage: {
+
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#ffffff',
+        width: '100%',
+
+    },
+    title: {
+        flex:0.5,
+        fontSize: 40,
+    }
 
 });
 

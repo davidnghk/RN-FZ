@@ -41,5 +41,5 @@ export default {
     saveAndEditCoord: '儲存及編輯坐標',
     editAlert: "修改",
     privacyPolicy: "私隱政策",
-
+    generatePdf: "下載Pdf",
 };

@@ -17,6 +17,7 @@ interface Alert {
     thing_code: string | null,
     thing_id: number | null,
     onPress: any,
+    dev_eui: string | null,
 };
 
 const AlertItem = (props: Alert) => {
@@ -41,6 +42,7 @@ const AlertItem = (props: Alert) => {
 
                 <View style={styles().centerContentCol}>
                     <CustomText style={{ fontWeight: 'bold' }}>{props.thing_name}</CustomText>
+                    <CustomText>{props.dev_eui}</CustomText>
                     {/* <CustomText numberOfLines={1} >{props.thing_code}</CustomText> */}
                     <CustomText>{formatDateTime(props.start_datetime)}</CustomText>
                     {props.end_datetime ?

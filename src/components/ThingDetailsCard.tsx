@@ -88,6 +88,7 @@ const ThingDetailsCard = (props: any) => {
 
                     <View style={styles.textCol}>
                         <CustomText style={styles.title}>{thingDetails?.name}</CustomText>
+                        <CustomText>{thingDetails?.dev_eui}</CustomText>
                         {/* <CustomText>{icon?.name}</CustomText> */}
                         <CustomText>{location?.name}</CustomText>
                         <CustomText>{getTranslateType(thingDetails?.onoff_status)}</CustomText>
@@ -120,7 +121,7 @@ const ThingDetailsCard = (props: any) => {
                                 longitude: parseFloat(thingDetails?.longitude) 
                             }} 
                             title={"location"}
-                            pinColor={thingDetails.onoff_status.toLowerCase() == "alarm" ? "red" : thingDetails.onoff_status.toLowerCase() == "normal"? "green" : "purple"}/>
+                            pinColor={thingDetails.onoff_status.toLowerCase() == "alarm" ? "red" : thingDetails.onoff_status.toLowerCase() == "normal"? "green" : "blue"}/>
                     </MapView>
                 </View> }
 

@@ -24,6 +24,7 @@ interface Thing {
     icon_url: string,
     onPress: any,
     location_id: string | null,
+    dev_eui: string | null,
 };
 
 const ThingItem = (props: Thing) => {
@@ -45,6 +46,7 @@ const ThingItem = (props: Thing) => {
 
                 <View style={styles.summaryCol}>
                     <CustomText numberOfLines={2} ellipsizeMode='tail' style={{ fontWeight: 'bold' }}>{props.name}</CustomText>
+                    <CustomText>{"Dev_eui: " + thingDetails?.dev_eui}</CustomText>
                     <CustomText>{t('common:bp_heart')}: {thingDetails?.bp_heart} </CustomText>
                     <CustomText>{t('common:body_temp')}: {thingDetails?.body_temp + "˚C"} </CustomText>
                     <CustomText>{t('common:bloodpressure')}: {thingDetails?.bp_high + " / " + thingDetails?.bp_low } </CustomText>

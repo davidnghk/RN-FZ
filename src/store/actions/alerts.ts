@@ -5,6 +5,10 @@ import { Config } from '../../config/config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as RootNavigation from '../../navigation/RootNavigation';
 import { triggerLogout } from './helpers';
+import { Linking, Platform, PermissionsAndroid } from 'react-native';
+import { NativeModules } from 'react-native';
+import RNFetchBlob from 'rn-fetch-blob';
+import moment from 'moment';
 
 export function loadAllAlerts(alerts: Alert[]) {
     return {
@@ -190,4 +194,52 @@ export function updateAlertDetails(alert_id: number, data: FormData) {
             dispatch(alertIsLoading(false));
         }
 }
+}
+
+export function generatePdf(alert_id: number) {
+    return async (dispatch: ThunkDispatch, getState: () => RootState) => {
+        try {
+
+            dispatch(alertIsLoading(true));
+            let date = moment(new Date()).format('DD-MM-YYYY hh mm a')
+            const token = await AsyncStorage.getItem('authToken');
+            const { dirs } = RNFetchBlob.fs;
+            RNFetchBlob.config({
+                fileCache: true,
+                path: `${dirs.DocumentDir}/Alert ${alert_id} ${date}.pdf`,
+                addAndroidDownloads:{
+                    useDownloadManager: true,
+                    notification: true,
+                    mediaScannable: true,
+                    path: `${dirs.DownloadDir}/Alert ${alert_id} ${date}.pdf`,
+                    description: "Downloading file from app",
+                },
+
+            })
+            .fetch("GET", `${Config.api_server}/alerts/${alert_id}/generate_pdf_report.pdf`, {
+                'Authorization': `Bearer ${token}`,
+            })
+            .then((res) => {
+
+                if (Platform.OS === 'ios') {
+                    RNFetchBlob.ios.openDocument(res.path())
+                }
+
+
+                    let base64Str = res.base64();
+                    let path = res.path();
+
+
+            })
+
+        }
+        catch(err) {
+            console.log("Error: ", err)
+            RootNavigation.navigate('NetworkErrorScreen', {}, {})
+        }
+        finally {
+            dispatch(alertIsLoading(false));
+        }
+    }         
+          
 }

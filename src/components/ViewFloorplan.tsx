@@ -127,7 +127,7 @@ const ViewFloorplan = (props: any) => {
                                         
                                     }}>
 
-                                    <Ionicons name={"location-sharp"} color={props.onOffStatus == "Normal" ? "green" : "purple"} size={32}>
+                                    <Ionicons name={"location-sharp"} color={props.onOffStatus == "Normal" ? "green" : "blue"} size={32}>
                                     </Ionicons>
                                     </View>
                         </View>

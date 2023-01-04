@@ -26,8 +26,6 @@ const AlertExpandableItem = (props: any) => {
     const alert = useSelector((state: RootState) => state.alerts.allAlerts).find(alert => alert.id === props.alert_id);
 
 
-
-
     const Row = (props: any) => {
         return (
             <View style={styles().row}>
@@ -52,7 +50,7 @@ const AlertExpandableItem = (props: any) => {
 
                 <View style={styles().itemCenterContentCol}>
                     <CustomText style={{ fontWeight: 'bold' }}>{props.thing_name}</CustomText>
-
+                    <CustomText>{thing?.dev_eui}</CustomText>
                     <View>
                         <CustomText>{formatDateTime(props.start_datetime)}</CustomText>
 

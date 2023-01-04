@@ -11,7 +11,13 @@ import Card from '../../components/Elements/Card';
 import CustomText from '../../components/Text/CustomText';
 import { getTranslateType, dialCall, formatDateTime } from '../../utils/resuableMethods';
 import COLOR from '../../constants/Theme/color';
-import { fetchAlert } from '../../store/actions/alerts'
+import { fetchAlert, generatePdf } from '../../store/actions/alerts'
+import { NativeModules } from 'react-native';
+import { Config } from '../../config/config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import RNFetchBlob, { RNFetchBlobConfig } from 'rn-fetch-blob';
+import moment from 'moment';
+
 
 
 const Row = (props: any) => {
@@ -98,6 +104,7 @@ const AlertDetailsScreen = ({ route, navigation }) => {
                         <View style={styles.textCol}>
                             <CustomText style={styles.title}>{alertDetails?.thing_name}</CustomText>
                             <CustomText>{icon?.name}</CustomText>
+                            <CustomText>{thing?.dev_eui}</CustomText>
                         </View>
                     </View>
 
@@ -141,7 +148,7 @@ const AlertDetailsScreen = ({ route, navigation }) => {
 
                     <View style={styles.buttonContainer}>
                         <CustomButton
-                            style={{width: 150}}
+                            style={{flex:1}}
                             onPress={() => {
                                 navigation.navigate('ThingDetailsScreen', { id: alertDetails?.thing_id })
                                 // navigation.navigate("Devices", {
@@ -154,12 +161,27 @@ const AlertDetailsScreen = ({ route, navigation }) => {
                         </CustomButton>
 
                         <EditButton
-                            style={{width: 150}}    
+                            style={{flex: 1}}    
                             onPress={() => {
                                 navigation.navigate('EditAlertScreen', { alert: alertDetails })
                             }}>
                             {t('buttons:editAlert')}
                         </EditButton>
+                    <CustomButton
+                            style={{flex: 1}}
+                            onPress={() => {
+                                    console.log("Generate Pdf")
+                                    let date = moment(new Date()).format('DD-MM-YYYY hh mm a')
+                                    Alert.alert(
+                                        "Downloading...",
+                                        `Alert ${alertDetails.id}_${date}.pdf`
+                                    )
+                                    dispatch(generatePdf(alertDetails?.id))
+                                    
+
+                            }}>
+                            {t('buttons:generatePdf')}
+                        </CustomButton>
                     </View>
 
                 </Card>

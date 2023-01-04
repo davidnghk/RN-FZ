@@ -212,6 +212,9 @@ dependencies {
 
 
     implementation project(':react-native-hms-push')
+    implementation project(':rn-fetch-blob')
+
+
 
     /* ********** Firebase Push Config ********** */
     //implementation 'com.google.firebase:firebase-analytics:17.3.0'

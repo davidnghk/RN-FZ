@@ -55,6 +55,7 @@ const ThingsScreen = (props: any) => {
                 icon_id={itemData.item.icon_id}
                 icon_url={itemData.item.icon_url}
                 location_id={itemData.item.location_id}
+                dev_eui={itemData.item.dev_eui}
                 onPress={() => {
                     navigation.navigate('ThingDetailsScreen', {
                         id: itemData.item.id

@@ -16,8 +16,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.airbnb.android.react.maps.MapsPackage;  
 import com.huawei.hms.rn.push.HmsPushPackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
+  
 
 
   private final ReactNativeHost mReactNativeHost =
@@ -35,6 +38,8 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           // packages.add(new HmsPushPackage());
           new MapsPackage()  ;
+          new RNFetchBlobPackage();
+          
           return packages;
         }
 
