@@ -1,6 +1,6 @@
 export default {
     viewDetail: '浏览详情',
-    viewDevice: '浏览人員',
+    viewDevice: '人員',
     scanDevice: '新增人員',
     scanAgain: '重新扫描',
     languageSetting: '语言设定',

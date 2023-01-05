@@ -291,6 +291,7 @@ const HomeScreen = (props: any) => {
 
                 <View style={{ width: '22%' }}>
                     <CustomText style={{ width: '100%' }} ellipsizeMode='tail' numberOfLines={1} >{getTranslateType(props.alertType)}</CustomText>
+                    <CustomText style={{ width: '100%' }} ellipsizeMode='tail' numberOfLines={1} >{props.category}</CustomText>
 
                 </View>
 
@@ -520,7 +521,7 @@ const HomeScreen = (props: any) => {
 
                         {firstThreeAlerts.map(alert => {
                             return (
-                                <RecentAlertItem alertType={alert.alert_type} key={alert.id} id={alert.id} startDatetime={alert.start_datetime} name={alert.thing_name} />
+                                <RecentAlertItem alertType={alert.alert_type} key={alert.id} id={alert.id} startDatetime={alert.start_datetime} name={alert.thing_name} category={alert.category}/>
                             )
                         })}
                     </View>

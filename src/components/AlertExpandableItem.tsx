@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { View, StyleSheet, TouchableOpacity, Text, Image, Button, Platform, Linking, Alert } from 'react-native';
-import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { productIcons } from '../assets/images/mapping';
 // Components
@@ -13,7 +13,13 @@ import ViewFloorplan from './ViewFloorplan';
 import { getTranslateType, dialCall, formatDateTime } from '../utils/resuableMethods'
 import COLOR from '../constants/Theme/color';
 
+import { generatePdf } from '../store/actions/alerts'
+import moment from 'moment';
+
+
 const AlertExpandableItem = (props: any) => {
+
+    const dispatch = useDispatch();
 
 
     const [showExpand, setShowExpand] = useState(false);
@@ -24,7 +30,6 @@ const AlertExpandableItem = (props: any) => {
     const location = useSelector((state: RootState) => state.locations.locations).find(location => location.id === thing?.location_id)
 
     const alert = useSelector((state: RootState) => state.alerts.allAlerts).find(alert => alert.id === props.alert_id);
-
 
     const Row = (props: any) => {
         return (
@@ -72,6 +77,10 @@ const AlertExpandableItem = (props: any) => {
                             {getTranslateType(props.alert_type)}
                         </CustomText>
                     }
+
+                    <CustomText style={styles(props.alert_type).alertTypeClear}>
+                            { props.category }
+                        </CustomText> 
 
                     {props.status == 'Set' &&
                         <CustomText style={styles().alertTypeSet}>
@@ -126,7 +135,7 @@ const AlertExpandableItem = (props: any) => {
 
                     <View style={styles().buttonContainer}>
                         <CustomButton
-                        style={{width: 150}}
+                        style={{flex: 1}}
                             onPress={() => {
                                 props.navigation.navigate('ThingDetailsScreen', { id: thing?.id })
                             }}>
@@ -134,12 +143,27 @@ const AlertExpandableItem = (props: any) => {
                         </CustomButton>
 
                         <EditButton
-                            style={{width: 150}}    
+                            style={{flex: 1}}    
                             onPress={() => {
                                 props.navigation.navigate('EditAlertScreen', { alert: alert })
                             }}>
                             {t('buttons:editAlert')}
                         </EditButton>
+
+                        <CustomButton
+                            style={{flex: 1}}
+                            onPress={() => {
+                                    let date = moment(new Date()).format('DD-MM-YYYY hh mm a')
+                                    Alert.alert(
+                                        "Downloading...",
+                                        `Alert ${alert.id}_${date}.pdf`
+                                    )
+                                    dispatch(generatePdf(alert?.id))
+                                    
+
+                            }}>
+                            {t('buttons:generatePdf')}
+                        </CustomButton>
 
                     </View>
 

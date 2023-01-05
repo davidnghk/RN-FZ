@@ -101,7 +101,7 @@ const ThingDetailsCard = (props: any) => {
                 { thingDetails?.latitude && thingDetails?.longitude && 
                 <View style={{justifyContent: 'center', alignItems: 'center'}}>
                     <MapView
-                        style={{height:400, width: 300, marginTop: 15}}
+                        style={{height: 300, width: 300, marginTop: 15}}
                         provider= {PROVIDER_GOOGLE}
                         showsUserLocation
                         zoomControlEnabled={true}

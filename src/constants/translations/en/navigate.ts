@@ -29,4 +29,6 @@ export default {
     person: "Person",
     editAlert: "Edit Alert Detail",
     privacyPolicy: "Privacy Policy",
+    thingDetails: "Person Details",
+    alertDetails: "Alert Details",
 };

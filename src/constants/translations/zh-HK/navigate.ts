@@ -30,4 +30,6 @@ export default {
     person: "人員",
     editAlert: "修改警報詳情",
     privacyPolicy: "私隱政策",
+    thingDetails: "人員詳情",
+    alertDetails: "警報詳情",
 };

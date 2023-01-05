@@ -56,7 +56,7 @@ export const ThingStackScreen = () => {
             } />
             <ThingStack.Screen name="ThingDetailsScreen" component={ThingDetailsScreen} options={
                 {
-                    headerTitle: t('navigate:details'),
+                    headerTitle: t('navigate:thingDetails'),
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginLeft: Platform.OS === 'ios' ? 0 : 15 }} onPress={() => {
                             navigation.reset({

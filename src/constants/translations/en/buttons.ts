@@ -1,6 +1,6 @@
 export default {
     viewDetail: 'View Detail',
-    viewDevice: 'View',
+    viewDevice: 'Person',
     scanDevice: 'Add Person',
     scanAgain: 'Scan Again',
     languageSetting: 'Language Setting',

@@ -37,7 +37,7 @@ export default {
     account: 'Account',
     platform: 'Platform',
     lastRead: 'Last Read',
-    history: 'History',
+    history: 'Alert History',
     phoneNumber: 'Phone Number',
     expiryDate: 'Expiry Date',
     devices: 'Devices', 

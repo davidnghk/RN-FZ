@@ -38,7 +38,7 @@ export default {
     account: '賬戶',
     platform: '平台',
     lastRead: '最後閱讀',
-    history: '歷史',
+    history: '警報歷史',
     phoneNumber: '電話號碼',
     expiryDate: '有效日期',
     devices: '裝置',
