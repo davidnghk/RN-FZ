@@ -144,8 +144,8 @@ android {
         applicationId "cloud.letsapp.lifeonline"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "1.1"
+        versionCode 1
+        versionName "0.9.5"
         missingDimensionStrategy 'react-native-camera', 'general'
         vectorDrawables.useSupportLibrary = true
     }
