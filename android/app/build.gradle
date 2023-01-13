@@ -140,6 +140,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
     defaultConfig {
         applicationId "cloud.letsapp.lifeonline"
         minSdkVersion rootProject.ext.minSdkVersion
