@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import { View, StyleSheet, Image, ScrollView, FlatList, TouchableOpacity } from 'react-native';
 import { RootState } from '../store/store';
 import { productIcons } from '../assets/images/mapping';
@@ -14,6 +14,9 @@ import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import { resetThing } from '../store/actions/things';
+
+
 
 
 
@@ -50,7 +53,7 @@ const Row = (props: any) => {
 };
 
 const ThingDetailsCard = (props: any) => {
-
+    const dispatch = useDispatch();
     const { t } = useTranslation();
     const navigation = useNavigation();
 
@@ -66,10 +69,15 @@ const ThingDetailsCard = (props: any) => {
         <ScrollView>
             
             <Card style={dynamicStyles(thingDetails?.state, thingDetails?.onoff_status, thingDetails?.warning_flag).item}>
-                <TouchableOpacity style={styles.editContainer} onPress={() => navigation.navigate('Person', { screen: 'EditDeviceScreen', params: { id: id, xCoordinate: thingDetails.x_coordinate, yCoordinate: thingDetails.y_coordinate, locationId: thingDetails.location_id, name: thingDetails.name } })}>
-                    <Icon name='edit' size={20} color='black' />
-                </TouchableOpacity>
+                <View>
+                    <TouchableOpacity style={styles.editContainer} onPress={() => navigation.navigate('Person', { screen: 'EditDeviceScreen', params: { id: id, xCoordinate: thingDetails.x_coordinate, yCoordinate: thingDetails.y_coordinate, locationId: thingDetails.location_id, name: thingDetails.name } })}>
+                        <Icon name='edit' size={30} color='black' />
+                    </TouchableOpacity>
 
+                    <TouchableOpacity style={styles.resetContainer} onPress={() => dispatch( resetThing(thingDetails?.id ))} >
+                        <Ionicons name='refresh' color='black' size={30}/>
+                    </TouchableOpacity>
+                </View>
                 {!icon &&
                     <View style={styles.headerRow}>
                         <View >
@@ -195,8 +203,14 @@ const styles = StyleSheet.create({
     },
     editContainer: {
         position: 'absolute',
-        right: 20,
-        top: 20,
+        right: 10,
+        top: 10,
+        zIndex: 3,
+    },
+    resetContainer: {
+        position: 'absolute',
+        right: 10,
+        top: 50,
         zIndex: 3,
     },
     icon: {

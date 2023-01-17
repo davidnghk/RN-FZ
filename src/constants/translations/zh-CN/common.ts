@@ -1,7 +1,7 @@
 export default {
     // Alert Type & State
     drill: '测试',
-    alarm: '火警',
+    alarm: '警报',
     prealarm: '预报',
     quiet: '正常',
     fault: '故障',

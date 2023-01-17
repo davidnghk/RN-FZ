@@ -247,3 +247,51 @@ export function updateDevice(thingId: number, name: string, locationId: number |
         }
     }
 }
+
+
+
+export function resetThing(thingId: number) {
+    return async (dispatch: ThunkDispatch, getState: () => RootState) => {
+        try {
+
+            dispatch(thingIsLoading(true));
+
+            const token = await AsyncStorage.getItem('authToken');
+
+            const res = await fetch(`${Config.api_server}/things/${thingId}/reset`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+
+            if (res.status === 401) {
+                triggerLogout(res);
+                return;
+            };
+
+            if (res.status !== 200) {
+                RootNavigation.navigate('ErrorScreen', { statusCode: res.status }, {})
+                return
+            };
+
+            const response = await res.json();
+
+            if (!response.Message) {
+                return;
+            };
+
+            if (response.Message != 'The things was claimed') {
+                return;
+            }
+
+            dispatch(fetchThings());
+
+        } catch (err) {
+            console.log('[Error: edit device]', err)
+            RootNavigation.navigate('NetworkErrorScreen', {}, {});
+        } finally {
+            dispatch(thingIsLoading(false));
+        }
+    }
+}
