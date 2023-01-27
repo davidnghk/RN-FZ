@@ -1428,7 +1428,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
-  FBReactNativeSpec: fa88cfc3bdf17d2d81c5f98a826cb7d3913420e0
+  FBReactNativeSpec: 4da8fe7df2974b5ad48347eee614d4d264b60dda
   Firebase: 4bb49ae87756034cef870fa3c4006235eb46f475
   FirebaseAnalytics: 7761cbadb00a717d8d0939363eb46041526474fa
   FirebaseAuth: 3e73bf8abf4fbb40f8b421f361f4cc48ee57388c
