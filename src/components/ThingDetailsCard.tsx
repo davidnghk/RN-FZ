@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import {RootState} from '../store/store';
 import {useTranslation} from 'react-i18next';
@@ -69,6 +70,8 @@ const ThingDetailsCard = (props: any) => {
   const dispatch = useDispatch();
   const {t} = useTranslation();
   const navigation = useNavigation();
+
+  const MAP_WIDTH = Dimensions.get('window').width - 80;
 
   const id = props.id;
   const thingDetails = useSelector(
@@ -150,9 +153,9 @@ const ThingDetailsCard = (props: any) => {
         </View>
 
         {thingDetails?.latitude && thingDetails?.longitude && (
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.map}>
             <MapView
-              style={{height: 300, width: 300, marginTop: 15}}
+              style={{height: MAP_WIDTH, width: MAP_WIDTH}}
               provider={PROVIDER_GOOGLE}
               showsUserLocation
               zoomControlEnabled={true}
@@ -245,12 +248,13 @@ const styles = StyleSheet.create({
   },
   headerRow: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     flex: 1,
   },
   imageCol: {
     width: '25%',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   textCol: {
@@ -308,8 +312,9 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
   map: {
-    flex: 1,
-    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
   },
 });
 
