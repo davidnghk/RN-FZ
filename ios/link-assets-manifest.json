@@ -1,0 +1,169 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/images/QRCodeGuide.png",
+      "sha1": "270f8cb9ad6bc7bfa2d2eefe531d9f30530355e5"
+    },
+    {
+      "path": "src/assets/images/QRScanSample.jpeg",
+      "sha1": "d69d402b529d5ef7c78ce1c922ea9f3dd187dd33"
+    },
+    {
+      "path": "src/assets/images/backup/ForgetPassword.jpg",
+      "sha1": "5e9f8754292830cb32ebec47bbe6ae417d8f0427"
+    },
+    {
+      "path": "src/assets/images/backup/floorplan.jpeg",
+      "sha1": "bbd2365d8c6f4245a90883a1ae2b12396da997eb"
+    },
+    {
+      "path": "src/assets/images/backup/logo.jpeg",
+      "sha1": "3eea5821b4135927953405b0eea82351ebbbab88"
+    },
+    {
+      "path": "src/assets/images/company_logo/LifeOnlineLandingBackground.png",
+      "sha1": "8421770c11c9747ea8b2fe426cf8fb228f7729cb"
+    },
+    {
+      "path": "src/assets/images/company_logo/LifeOnlineLogInBackground.jpeg",
+      "sha1": "f73b97a912441d42ca9fe20d5743d73715ac72c0"
+    },
+    {
+      "path": "src/assets/images/company_logo/Logo.png",
+      "sha1": "8d21d913798a19616ee888fc2ca7d0659e646390"
+    },
+    {
+      "path": "src/assets/images/company_logo/SmartWatchLogo.png",
+      "sha1": "d89a0c454101464f3ad01eb63cc0bafaf2a793ca"
+    },
+    {
+      "path": "src/assets/images/company_logo/locations.jpeg",
+      "sha1": "455642b49310e9f983b09193cd6a3c98151d87d1"
+    },
+    {
+      "path": "src/assets/images/company_logo/personstatus.jpeg",
+      "sha1": "00d77c5ff462d7f54b8f65ba0410be453bcb9ec4"
+    },
+    {
+      "path": "src/assets/images/components/GreenCheck.png",
+      "sha1": "d540efc5efa5249ff3da17e55c08aa49642bc165"
+    },
+    {
+      "path": "src/assets/images/components/sensor-test.jpeg",
+      "sha1": "e36a7a83b2815a6fc72147518f76bff07e49d943"
+    },
+    {
+      "path": "src/assets/images/components/siren-removebg.png",
+      "sha1": "12c035e351b3cb0a968dca24879e60e3c2e186a8"
+    },
+    {
+      "path": "src/assets/images/components/siren.jpg",
+      "sha1": "9c6631bad2d1e1b3aa7d034aa01d83d769187e19"
+    },
+    {
+      "path": "src/assets/images/default_user_avatar.png",
+      "sha1": "b6fa411b3b2f5c0e3d92323bbc7bc4b84fbf7664"
+    },
+    {
+      "path": "src/assets/images/mapping.tsx",
+      "sha1": "2f698a6f30d2a67f7a97803c74d22f803833e112"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-802271.jpeg",
+      "sha1": "94890c003c19bea90eb7cfc1b2e3c58ab1b56cc9"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-802371.jpeg",
+      "sha1": "3083b72968cc2aa0ee1429939da0d3d36f9d326b"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-802374.jpeg",
+      "sha1": "3d72fec9d34eeb8d672191a8f0af94b801f4478a"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-802385.jpeg",
+      "sha1": "141162a6d91ef8b86cbf6e9e6a5a63d751a1fc18"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-802473.jpeg",
+      "sha1": "960ef75d7cc5278c267c7a562e739785effadef8"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-804961.jpeg",
+      "sha1": "56f79b3dfa85a283fbbb5a819be4fe3745bcc3d1"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-804971.jpeg",
+      "sha1": "44a159e7a821e51b070c0181119663789b4584f6"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-807322R.jpeg",
+      "sha1": "6c91406fac3fc9d1287ae3ede2361eac7d61b0f1"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-808606.jpeg",
+      "sha1": "0ebe5335b60259be706b0a0888190ab911631f6f"
+    },
+    {
+      "path": "src/assets/images/product_icons/ESSER-808623.jpeg",
+      "sha1": "bc6bbe3d3acf190f93e72ccfadce79c423ac0fdb"
+    },
+    {
+      "path": "src/assets/images/product_icons/MS-AM319.png",
+      "sha1": "5aca23ef37ca8b0fb3d3dcc6c801bdebd1e8abd3"
+    },
+    {
+      "path": "src/assets/images/product_icons/NOTI-BeamDetector.jpeg",
+      "sha1": "4451cf1a719f50125da015d962570de24bd06ee0"
+    },
+    {
+      "path": "src/assets/images/product_icons/NOTI-FAPT-851.jpeg",
+      "sha1": "869c6301e45f838bc85b787020939ef8253ddf6c"
+    },
+    {
+      "path": "src/assets/images/product_icons/NOTI-FCO-951.jpeg",
+      "sha1": "3e87daafb84a33fe8465747a83cb31484c32e003"
+    },
+    {
+      "path": "src/assets/images/product_icons/NOTI-FST-851.jpeg",
+      "sha1": "6efa777dc38d6cf60e829f51fb2db0e65a709145"
+    },
+    {
+      "path": "src/assets/images/product_icons/RAK-7204.jpeg",
+      "sha1": "33a857b4a9884e9024fc01faa3490a29587c9587"
+    },
+    {
+      "path": "src/assets/images/product_icons/SITERWELL-GS529A.jpeg",
+      "sha1": "d3936b2b5865a344d74dfbf3a45f5fdd727c1f9e"
+    },
+    {
+      "path": "src/assets/images/product_icons/SITERWELL-GS529N.jpeg",
+      "sha1": "0fb7cae823d4b30a1ab519ebde2310d17e5fbf43"
+    },
+    {
+      "path": "src/assets/images/screen_main_images/Notification.jpg",
+      "sha1": "a0c2f31ddd3951a1730cea0964709c7f83eada24"
+    },
+    {
+      "path": "src/assets/images/screen_main_images/blueprint.jpeg",
+      "sha1": "89a41294492c0753d357722d4131e1d9c15804e3"
+    },
+    {
+      "path": "src/assets/images/screen_main_images/detector.png",
+      "sha1": "4e48109c5df43efea7785ae8f8cc5c6bbc2760ec"
+    },
+    {
+      "path": "src/assets/images/screen_main_images/messages.jpg",
+      "sha1": "f22273267b07629485900fd38e313c3870e7f634"
+    },
+    {
+      "path": "src/assets/images/screen_main_images/scan.jpg",
+      "sha1": "3a4b851e71b937841f85a12fc965aaa5bbcaa180"
+    },
+    {
+      "path": "src/assets/images/screen_main_images/yellow_error.jpg",
+      "sha1": "f30f668cc6ea57c9e28fed07eae3a1abf86c39a7"
+    }
+  ]
+}

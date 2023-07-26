@@ -1,0 +1,23 @@
+diff --git a/node_modules/react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java b/node_modules/react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java
+index 1620787..230c0a7 100644
+--- a/node_modules/react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java
++++ b/node_modules/react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java
+@@ -544,16 +544,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
+ 
+   @ReactMethod(isBlockingSynchronousMethod = true)
+   public boolean hasHmsSync() {
+-    try {
+-      Class<?> huaweiApiAvailability = Class.forName("com.huawei.hms.api.HuaweiApiAvailability");
+-      Method getInstanceMethod = huaweiApiAvailability.getMethod("getInstance");
+-      Object hmsObject = getInstanceMethod.invoke(null);
+-      Method isHuaweiMobileServicesAvailableMethod = hmsObject.getClass().getMethod("isHuaweiMobileServicesAvailable", Context.class);
+-      int isHMS = (int) isHuaweiMobileServicesAvailableMethod.invoke(hmsObject, getReactApplicationContext());
+-      return isHMS == 0; // ConnectionResult.SUCCESS
+-    } catch (Exception e) {
+-      return false;
+-    }
++    return false;
+   }
+   @ReactMethod
+   public void hasHms(Promise p) { p.resolve(hasHmsSync()); }
+}
