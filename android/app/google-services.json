@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "925983179268",
-    "project_id": "lifeonline-366508",
-    "storage_bucket": "lifeonline-366508.appspot.com"
+    "project_number": "824246015289",
+    "project_id": "faczilla-2bf87",
+    "storage_bucket": "faczilla-2bf87.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:925983179268:android:2adabb1485fe7a3b262b51",
+        "mobilesdk_app_id": "1:824246015289:android:c8248b0ab2ef85f285c4e8",
         "android_client_info": {
-          "package_name": "cloud.letsapp.lifeonline"
+          "package_name": "cloud.letsapp.faczilla"
         }
       },
       "oauth_client": [
         {
-          "client_id": "925983179268-kbcaovur8qo14jplijmfob8s20krnqjt.apps.googleusercontent.com",
+          "client_id": "824246015289-daprfevum8gc1bp2dp97h838hjn8cgr1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCdwpTF_a9r-VXAt8NCIgveu9xucq1iu4U"
+          "current_key": "AIzaSyAoIzmXf8QmsRSm92sJ-Rk18KDUiicuM-w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "925983179268-kbcaovur8qo14jplijmfob8s20krnqjt.apps.googleusercontent.com",
+              "client_id": "824246015289-daprfevum8gc1bp2dp97h838hjn8cgr1.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "925983179268-sui7enqk56d8h9qlope2ct3m0jnt9gut.apps.googleusercontent.com",
+              "client_id": "824246015289-bnvtu9oo0j7upu41ohkglu45oe8p39o0.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "cloud.letsapp.lifeonline"
+                "bundle_id": "cloud.letsapp.faczilla"
               }
             }
           ]

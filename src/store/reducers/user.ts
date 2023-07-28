@@ -1,17 +1,16 @@
 import {UserActions} from '../actions/user';
 
 export interface User {
-  id: number | null;
-  name: string | null;
-  email: string | null;
-  phone: string | null;
-  avatar_url: string | null;
-  unread: number | null;
-  last_read_datetime: string | null;
-  notification_platform: string | null;
-  notification_token: string | null;
-  default_account_id: number | null;
-  admin: boolean;
+  id: number | null,
+  name: string | null,
+  email: string | null,
+  phone: string | null,
+  avatar_url: string | null,
+  unread: number | null,
+  last_read_datetime: string | null,
+  notification_platform: string | null,
+  notification_token: string | null,
+  default_account_id: number | null,
 }
 
 export interface EmergencyContact {

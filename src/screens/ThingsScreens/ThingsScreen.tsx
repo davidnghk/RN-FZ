@@ -10,7 +10,7 @@ import CustomButton from '../../components/CustomButton';
 import EmptyDeviceScreen from './EmptyDeviceScreen';
 import COLOR from '../../constants/Theme/color';
 import Loader from '../../components/Loader';
-
+import { fetchIcons } from '../../store/actions/icons';
 
 const ThingsScreen = (props: any) => {
 
@@ -20,6 +20,7 @@ const ThingsScreen = (props: any) => {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const thingsLength = things ? things.length : 0;
 
     const vancancy = account.vancancy
     let quota = account.quota
@@ -32,12 +33,13 @@ const ThingsScreen = (props: any) => {
 
     useEffect(() => {
         dispatch(fetchThings());
+        dispatch(fetchIcons());
     }, []);
 
     const onRefresh = () => {
         //Call the Service to get the latest data
         dispatch(fetchThings());
-
+        dispatch(fetchIcons());
     };
 
     // @ts-ignore
@@ -56,6 +58,7 @@ const ThingsScreen = (props: any) => {
                 icon_url={itemData.item.icon_url}
                 location_id={itemData.item.location_id}
                 dev_eui={itemData.item.dev_eui}
+                readings={itemData.item.readings}
                 onPress={() => {
                     navigation.navigate('ThingDetailsScreen', {
                         id: itemData.item.id

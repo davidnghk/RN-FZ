@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { View, StyleSheet, ImageBackground, Dimensions, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Loader from './Loader';
 import CustomText from './Text/CustomText';
 
@@ -117,8 +117,8 @@ const ViewMasterFloorplan = (props: any) => {
                                             <CustomText>{thing.name}</CustomText>
 
                                         </TouchableOpacity> 
-                                    <Ionicons name={"location-sharp"} color={"red"} size={32}>
-                                    </Ionicons>
+                                    <MaterialIcons name={"location-on"} color={"red"} size={32}>
+                                    </MaterialIcons>
                                     </View>
                                 </TouchableOpacity>
 
@@ -162,8 +162,8 @@ const ViewMasterFloorplan = (props: any) => {
                                             <CustomText>{thing.name}</CustomText>
 
                                         </TouchableOpacity> 
-                                    <Ionicons name={"location-sharp"} color={thing.onoff_status == "Normal" ? "green" : "blue"} size={32}>
-                                    </Ionicons>
+                                    <MaterialIcons name={"location-on"} color={thing.onoff_status == "Normal" ? "green" : "blue"} size={32}>
+                                    </MaterialIcons>
                                     </View>
                                     
                                 </TouchableOpacity>

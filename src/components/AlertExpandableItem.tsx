@@ -79,7 +79,7 @@ const AlertExpandableItem = (props: any) => {
                     }
 
                     <CustomText style={styles(props.alert_type).alertTypeClear}>
-                            { props.category }
+                            { props.issue_text }
                         </CustomText> 
 
                     {props.status == 'Set' &&

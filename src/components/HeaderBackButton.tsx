@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import COLOR from '../constants/Theme/color';
 
 const HeaderBackButton = (props: any) => {
 
     return (
         <View style={styles.buttonContainer}>
-            <Ionicons name='ios-arrow-back-outline' color={COLOR.headerButtonColor} size={22} style={{ width: 26 - 32 }} />
+            <MaterialIcons name='keyboard-backspace' color={COLOR.headerButtonColor} size={22} style={{ width: 26 - 32 }} />
         </View>
     )
 };

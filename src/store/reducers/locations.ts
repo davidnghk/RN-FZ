@@ -1,5 +1,5 @@
 import { LocationsActions } from "../actions/locations"
-import { Thing } from "../reducers/things"
+import { Thing } from "./things"
 
 export interface Location {
     id: number | null,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import * as AlertsActions from '../store/actions/alerts';
 import * as ThingsActions from '../store/actions/things';
 import * as UserActions from '../store/actions/user';
@@ -49,7 +49,7 @@ const RefreshButton = (props: any) => {
         <View style={styles.headerButton}>
             <TouchableOpacity onPress={() => {refreshHandler(props.target, props.id)}} >
                 <View style={styles.row}>
-                    <Icon name={props.name} size={props.size} color={COLOR.headerButtonColor} />
+                    <MaterialIcons name={props.name} size={props.size} color={COLOR.headerButtonColor} />
                 </View>
             </TouchableOpacity>
         </View>

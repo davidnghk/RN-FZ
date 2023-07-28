@@ -29,7 +29,7 @@ export const VisitorStackScreen = () => {
                 headerBackTitleVisible: false,
             })}>
                 <VisitorStack.Screen name="LandingScreen" component={LandingScreen} options={{
-                    headerTitle: "LifeOnline",
+                    headerTitle: "Faczilla",
                 }} />
                 <VisitorStack.Screen name="LoginScreen" component={LoginScreen} options={{
                     headerTitle: t('navigate:login'),

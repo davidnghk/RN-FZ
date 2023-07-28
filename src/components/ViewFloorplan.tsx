@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { View, StyleSheet, ImageBackground, Dimensions, TouchableOpacity} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Loader from './Loader';
 import CustomText from './Text/CustomText';
 
@@ -63,7 +63,7 @@ const ViewFloorplan = (props: any) => {
 
         return (
 
-            <Ionicons name={"location-sharp"} color={"red"} size={32} style={
+            <MaterialIcons name={"location-on"} color={"red"} size={32} style={
                 {
                     position: 'absolute',
                     top: props.y_coordinate ? calCoordinate(props.y_coordinate) - 28 : 0,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, StyleSheet, Image } from 'react-native';
 import { productIcons } from '../assets/images/mapping';
@@ -7,9 +7,9 @@ import CustomText from './Text/CustomText';
 import { getTranslateType, formatDateTime, fireSensorGetColorFromStatusOrWarning } from '../utils/resuableMethods';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch} from 'react-redux';
 import { RootState } from '../store/store';
-
+import { fetchIcons } from '../store/actions/icons'
 
 interface Thing {
     id: number | null,
@@ -25,14 +25,25 @@ interface Thing {
     onPress: any,
     location_id: string | null,
     dev_eui: string | null,
+    readings:{} | null,
 };
 
 const ThingItem = (props: Thing) => {
 
     const { t } = useTranslation();
-    const icon = useSelector((state: RootState) => state.icons.icons.filter(icon => props.icon_id === icon.id)[0]);
     const location = useSelector((state: RootState) => state.locations.locations).find(location => location.id === props.location_id);
     const thingDetails = useSelector((state: RootState) => state.things.things).find(thing => thing.id === props.id)!;
+    const icon = useSelector((state: RootState) => state.icons.icons.find(icon => icon.id === props.icon_id))
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchIcons());
+    }, []);
+
+    const onRefresh = () => {
+        dispatch(fetchIcons());
+    };
+    
 
     return (
 
@@ -47,9 +58,15 @@ const ThingItem = (props: Thing) => {
                 <View style={styles.summaryCol}>
                     <CustomText numberOfLines={2} ellipsizeMode='tail' style={{ fontWeight: 'bold' }}>{props.name}</CustomText>
                     <CustomText>{"Dev_eui: " + thingDetails?.dev_eui}</CustomText>
-                    <CustomText>{t('common:bp_heart')}: {thingDetails?.bp_heart} </CustomText>
+                    {/*<CustomText>{t('common:bp_heart')}: {thingDetails?.bp_heart} </CustomText>
                     <CustomText>{t('common:body_temp')}: {thingDetails?.body_temp + "˚C"} </CustomText>
-                    <CustomText>{t('common:bloodpressure')}: {thingDetails?.bp_high + " / " + thingDetails?.bp_low } </CustomText>
+                    <CustomText>{t('common:bloodpressure')}: {thingDetails?.bp_high + " / " + thingDetails?.bp_low } </CustomText>*/}
+                    {icon?.reading_labels ? Object.entries(thingDetails?.readings)
+                        .filter(([key, value]) => icon.reading_labels.includes(key))
+                        .map(([key, value]) => (
+                            <CustomText key={key}>{`${t(`${key}`)}: ${value}`}</CustomText>
+                        )) 
+                    : null}
                     <CustomText>{ formatDateTime(thingDetails?.updated_at) } </CustomText>
                 </View>
 

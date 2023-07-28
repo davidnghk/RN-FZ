@@ -33,7 +33,7 @@ const LandingScreen = (props: any) => {
     return (
         <View style={styles.screen}>
             <ImageBackground source={require('../../assets/images/company_logo/LifeOnlineLandingBackground.png')} resizeMode="cover" blurRadius={1} style={styles.backgroundImage}>
-            <Text style={styles.title}>{"LifeOnline"}</Text>
+            <Text style={styles.title}>{"Faczilla"}</Text>
             {isForceLogoutPopUp && forceLogoutMsg === 'New Device login!' &&
                 <MessagePopUp
                     visible={isForceLogoutPopUp}

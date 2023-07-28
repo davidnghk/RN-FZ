@@ -6,21 +6,29 @@ export interface Alert {
   thing_id: number | null;
   start_datetime: string | null;
   end_datetime: string | null;
-  status: string;
-  created_at: string | null;
-  updated_at: string | null;
-  state: string | null;
-  alert_type: string | null;
-  icon_url: string | null;
-  floorplan_url: string | null;
-  icon_code: string | null;
-  icon_name: string | null;
-  thing_code: string | null;
-  thing_name: string | null;
-  details: string | null;
-  photo: any | null;
-  photo_url: any | null;
-  category: string | null;
+  status: string,
+  created_at: string | null,
+  updated_at: string | null,
+  state: string | null,
+  alert_type: string | null,
+  icon_url: string | null,
+  floorplan_url: string | null,
+  icon_code: string | null,
+  icon_name: string | null,
+  thing_code: string | null,
+  thing_name: string | null,
+  details: string | null,
+  photo: any | null,
+  photo_url: any | null,
+  issue_text: string | null,
+  rssi: number | null,
+  snr: number | null,
+  latitude: number | null,
+  longitude: number | null,
+  issue: string | null,
+  alert_tags: [] | null,
+  group: string | null,
+  result: string | null,
 }
 
 export interface AlarmPopUp {
