@@ -13,7 +13,7 @@ const AmbienceDeviceListScreen = (props: any) => {
     const dispatch = useDispatch()
     const devices = useSelector((state: RootState) => state.ambience.ambienceDevices);
     const listIsLoading = useSelector((state: RootState) => state.ambience.listIsLoading);
-
+    
     useEffect(() => {
         dispatch(fetchAmbienceDevices());
 

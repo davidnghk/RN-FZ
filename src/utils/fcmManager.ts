@@ -6,7 +6,7 @@ export async function getFcmToken(userId: number) {
     const fcmToken = await messaging().getToken();
 
     if (fcmToken) {
-        // console.log("Firebase token is:", fcmToken);
+        //console.log("Firebase token is:", fcmToken);
         return { msg: 'success', fcmToken }
     } else {
         return { msg: 'no token' }

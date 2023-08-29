@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
         // backgroundColor: 'yellow'
     },
     warningIconContainer: {
-        backgroundColor: 'red',
+        backgroundColor: '#DC143C',
         borderRadius: 2,
         padding: 2,
         alignItems: 'center',

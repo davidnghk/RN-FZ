@@ -12,6 +12,7 @@ import HeaderBackButton from '../../components/HeaderBackButton';
 // screens
 import ThingsScreen from '../../screens/ThingsScreens/ThingsScreen';
 import ThingDetailsScreen from '../../screens/ThingsScreens/ThingDetailsScreen';
+import ThingDeviceChartScreen from '../../screens/ThingsScreens/ThingDeviceChartScreen';
 import AlertDetailsScreen from '../../screens/AlertsScreen/AlertDetailsScreen';
 import ScanDeviceScreen from '../../screens/UserAddDevice/ScanDeviceScreen';
 import RegisterDeviceScreen from '../../screens/UserAddDevice/RegisterDeviceScreen';
@@ -37,7 +38,7 @@ export const ThingStackScreen = () => {
           <View style={{flexDirection: 'row'}}>
             <RefreshButton name="refresh" size={18} target="alerts,things" />
             <AlertNotifications
-              name="bell-o"
+              name="notifications"
               size={18}
               onPress={() =>
                 navigation.navigate('Alerts', {screen: 'AlertsScreen'})
@@ -56,6 +57,11 @@ export const ThingStackScreen = () => {
           headerTitle: t('navigate:person'),
         }}
       />
+      <ThingStack.Screen name="ThingDeviceChartScreen" component={ThingDeviceChartScreen} options={
+                {
+                    headerTitle: '',
+                }
+      } />
       <ThingStack.Screen
         name="ThingDetailsScreen"
         component={ThingDetailsScreen}

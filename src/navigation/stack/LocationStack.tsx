@@ -33,7 +33,7 @@ export const LocationStackScreen = (props: any) => {
                     <View style={{ flexDirection: 'row' }}>
                         <RefreshButton name='refresh' size={18} target='locations' />
                         <AlertNotifications
-                            name='bell-o'
+                            name='notifications'
                             size={18}
                             onPress={() => navigation.navigate('AlertsScreen')}
                         />
@@ -69,7 +69,7 @@ export const LocationStackScreen = (props: any) => {
                     <View style={{ flexDirection: 'row' }}>
                         <RefreshButton name='refresh' size={18} target='location' id={route.params.id} />
                         <AlertNotifications
-                            name='bell-o'
+                            name='notifications'
                             size={18}
                             onPress={() => {
                                 props.navigation.navigate("Alerts", {

@@ -47,14 +47,65 @@ export interface Thing {
     floorplan_url: string | null,
 };
 
+export interface thingsDevicesDataSet {
+    id: number,
+    dataSet: {
+        batteryData: string | null,
+        humidityData: string | null,
+        barometerData: string | null,
+        temperatureData: string | null,
+        gasResistanceData: string | null,
+        co2Data: number | null,
+        pirData: string | null,
+        hchoData: number | null,
+        pm10Data: number | null,
+        tvocData: number | null,
+        pm2_5Data: number | null,
+        pressureData: number | null,
+        light_levelData: number | null,
+        msgData: number | null,
+        rawData: number | null,
+        stateData: number | null,
+        bp_lowData: number | null,
+        bp_highData: number | null,
+        messageData: number | null,
+        bp_heartData: number | null,
+        stepData: number | null,
+        signal_pctData: number | null,
+        body_tempData: number | null,
+        voltage_pctData: number | null,
+        wrist_tempData: number | null,
+        blood_oxygenData: number | null,
+        body_TempData: number | null,
+        skin_TempData: number | null,
+    }
+}
+
+export interface ChartData {
+    x: string,
+    y: number | null,
+}
+
+export interface MinMax {
+    min: number,
+    max: number,
+}
+
+export interface DataSet {
+    chartData: ChartData[],
+    minMax: MinMax,
+}
+
 export interface ThingsState {
     things: Thing[],
+    thingsDevicesDataSet: ThingsDeviceDataSet[],
     isLoading: boolean,
     isLocated: boolean,
 };
 
 const initialState = {
     things: [],
+    thingsDevicesDataSet: [],
     isLoading: false,
     isLocated: false,
     readings:[],
@@ -94,6 +145,21 @@ export const thingsReducer = (state: ThingsState = initialState, action: ThingsA
                 ...state,
                 isLoading: thingIsLoading,
             };
+
+        case "@@things/LOAD_CHART_DATA":
+            const dataSet = { id: action.deviceId, dataSet: action.dataSet };
+            let copyDeviceDataSet = state.thingsDevicesDataSet.slice();
+
+            let newDeviceDataSet = copyDeviceDataSet.filter(function (data) {
+                return data.id != action.deviceId;
+            });
+
+            newDeviceDataSet.push(dataSet);
+
+            return {
+                ...state,
+                thingsDevicesDataSet: newDeviceDataSet
+            }
 
         case '@@things/CLEAR_THINGS':
             return initialState

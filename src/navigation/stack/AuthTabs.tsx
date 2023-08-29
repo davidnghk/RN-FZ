@@ -54,7 +54,7 @@ const AuthTabs = (props: any) => {
     const alarmPopUp = useSelector((state: RootState) => state.alerts.alarmPopUp);
     const alarmPopUpShowModal = useSelector((state: RootState) => state.alerts.alarmPopUp.showAlarmPopUp);
     const [isalarmPopUp, setIsalarmPopUp] = useState(false);
-
+    
     useEffect(() => {
 
         if (alarmPopUpShowModal) {
@@ -67,22 +67,18 @@ const AuthTabs = (props: any) => {
 
     }, [alarmPopUpShowModal])
 
-
-
     return (
 
         <>
             {isalarmPopUp &&
                 <AlarmPopUp
                     visible={isalarmPopUp}
-                    name={alarmPopUp.alert?.thing_name}
+                    name={alarmPopUp.alert?.issue_text}
                     id={alarmPopUp.alert?.id}
                     alertType={alarmPopUp.alert?.alert_type}
                     navigation={props.navigation}
                 />
             }
-
-
 
             <Tabs.Navigator
                 tabBarOptions={{
@@ -93,7 +89,7 @@ const AuthTabs = (props: any) => {
                 })}>
                 <Tabs.Screen name="Home" component={HomeStackScreen} options={{ tabBarLabel: t('tab:home') }} />
                 <Tabs.Screen name="Alerts" component={AlertStackScreen} options={{ tabBarLabel: t('tab:alerts') }} />
-                {/* <Tabs.Screen name="Ambience" component={AmbienceStackScreen} options={{ tabBarLabel: t('tab:ambience') }} /> */}
+                {/*<Tabs.Screen name="Ambience" component={AmbienceStackScreen} options={{ tabBarLabel: t('tab:ambience') }} />*/}
                 <Tabs.Screen name="Person" component={ThingStackScreen} options={{ tabBarLabel: t('tab:person') }} />
                 <Tabs.Screen name="Locations" component={LocationStackScreen} options={{ tabBarLabel: t('tab:locations') }} />
                 <Tabs.Screen name="User" component={UserStackScreen} options={{ tabBarLabel: t('tab:user') }} />

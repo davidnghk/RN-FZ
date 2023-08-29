@@ -78,7 +78,14 @@ const AmbienceChartScreen = ({ route, navigation }) => {
                                 data: { stroke: COLOR.lineColor },
                                 parent: { border: "1px solid #ccc" },
                             }}
-                            data={chartData}
+                            //data={chartData}
+                            data={[
+                                { x: 1, y: 2 },
+                                { x: 2, y: 3 },
+                                { x: 3, y: 5 },
+                                { x: 4, y: 4 },
+                                { x: 5, y: 6 }
+                              ]}
                         />
 
                     </VictoryChart>

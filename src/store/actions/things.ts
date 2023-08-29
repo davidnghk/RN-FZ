@@ -7,7 +7,9 @@ import * as RootNavigation from '../../navigation/RootNavigation';
 import { Alert, Platform } from 'react-native';
 import { triggerLogout } from './helpers';
 import { actionTriggerShowModal } from './modal';
-import { fetchLocation } from './locations'
+import { fetchLocation } from './locations';
+import ThingsData from '../../utils/thingsDataProcessor';
+import { thingsConfig,ThingsParamMapping } from '../../config/thingsConfig';
 
 export function loadThings(things: Thing[]) {
     return {
@@ -34,6 +36,14 @@ export function loadThing(thingId: number, thing: Thing) {
         type: "@@things/LOAD_THING" as const,
         thingId: thingId,
         thing: thing
+    }
+}
+
+export function loadThingsChartDataSet(id: number, dataSet: any) {
+    return {
+        type: '@@things/LOAD_CHART_DATA' as const,
+        deviceId: id,
+        dataSet: dataSet,
     }
 }
 
@@ -120,6 +130,67 @@ export function fetchThing(thingId: number) {
         }
     };
 }
+
+export function fetchRecord(deviceId: number) {
+    return async (dispatch: ThunkDispatch, getState: () => RootState) => {
+        try {
+            let resetDataObject = [];
+            dispatch(loadThingsChartDataSet(deviceId, resetDataObject));
+            dispatch(thingIsLoading(true));
+
+            const token = await AsyncStorage.getItem('authToken');
+            const res = await fetch(`${Config.api_server}/messages?thing_id=${deviceId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (res.status === 401) {
+                triggerLogout(res);
+                return;
+            };
+
+            if (res.status !== 200) {
+                RootNavigation.navigate('ErrorScreen', { statusCode: res.status }, {})
+                return
+            };
+
+            const data = await res.json();
+
+            if (!data) {
+                return
+            }
+            
+            let ThingData = new ThingsData(data);
+            let ThingsDataObject = thingsConfig.thingsConfigParamDataObject;
+
+            for (let ThingsParam of thingsConfig.thingsConfigParamList) {
+
+                const dataName = ThingsParam + 'Data';
+                
+                const dataObject = ThingData.getDataAndMinMaxObject(ThingsParam);
+
+                if(dataObject.minMax === null){ continue; }
+
+                if ( dataObject.minMax !== null && ( !isFinite(dataObject.minMax.max) || !isFinite(dataObject.minMax.min))) {
+                    continue;
+                }
+
+                ThingsDataObject[dataName] = dataObject;
+                
+            };
+
+            dispatch(loadThingsChartDataSet(deviceId, ThingsDataObject));
+
+        } catch (err) {
+            console.log('[Error: Fetch things record]', err);
+            RootNavigation.navigate('NetworkErrorScreen', {}, {})
+        } finally {
+            dispatch(thingIsLoading(false));
+            
+        }
+    };
+};
 
 export function searchThing(eui: string) {
     return async (dispatch: ThunkDispatch, getState: () => RootState) => {

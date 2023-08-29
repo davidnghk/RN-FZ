@@ -35,7 +35,7 @@ export const AmbienceStackScreen = () => {
                     <View style={{ flexDirection: 'row' }}>
                         <RefreshButton name='refresh' size={18} target='ambience' />
                         <AlertNotifications
-                            name='bell-o'
+                            name='notifications'
                             size={18}
                             onPress={() => navigation.navigate('AlertsScreen')}
                         />

@@ -168,6 +168,7 @@ const HomeScreen = (props: any) => {
 
     useEffect(() => {
         fcmManager.notificationListener()
+    
     })
 
 
@@ -213,7 +214,7 @@ const HomeScreen = (props: any) => {
         
         const unsubscribe = messaging().onMessage(async remoteMessage => {
 
-            // console.log('A new FCM message arrived!, remote message: ', remoteMessage)
+            //console.log('A new FCM message arrived!, remote message: ', remoteMessage)
 
             if (remoteMessage.notification?.title === 'SwitchMobile') {
                 // console.log('Switch Mobile')
@@ -223,6 +224,7 @@ const HomeScreen = (props: any) => {
             };
 
             if (remoteMessage.notification?.title === 'NewAlert') {
+                //console.log('received notification from Push Notification Handling');
                 dispatch(UserActions.hasUnread());
                 dispatch(ThingsActions.fetchThings());
                 dispatch(AlertsActions.fetchAllAlerts());
@@ -237,7 +239,7 @@ const HomeScreen = (props: any) => {
     useEffect(() => {
 
         messaging().onNotificationOpenedApp(remoteMessage => {
-            // console.log('Notification caused app to open from background state:', remoteMessage.notification,);
+             console.log('Notification caused app to open from background state:', remoteMessage.notification,);
 
             // Empty Notification Tray
             notificationManager.cancelAllNotification();
@@ -247,6 +249,7 @@ const HomeScreen = (props: any) => {
             };
 
             if (remoteMessage.notification?.title === 'NewAlert') {
+                console.log('received notification from Background Notification Handling');
                 dispatch(ThingsActions.fetchThings());
                 dispatch(AlertsActions.fetchAllAlerts());
                 navigation.navigate("Alerts", { screen: 'AlertsScreen' });

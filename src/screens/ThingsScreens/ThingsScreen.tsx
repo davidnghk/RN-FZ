@@ -5,6 +5,7 @@ import { RootState } from '../../store/store';
 import { fetchThings } from '../../store/actions/things';
 import { useNavigation } from '@react-navigation/native';
 import ThingItem from '../../components/ThingItem';
+import ThingExpandableItem from '../../components/ThingExpandableItem';
 import { useTranslation } from 'react-i18next';
 import CustomButton from '../../components/CustomButton';
 import EmptyDeviceScreen from './EmptyDeviceScreen';
@@ -45,7 +46,7 @@ const ThingsScreen = (props: any) => {
     // @ts-ignore
     const renderThingsItem = (itemData) => {
         return (
-            <ThingItem
+            <ThingExpandableItem
                 id={itemData.item.id}
                 name={itemData.item.name}
                 thing_code={itemData.item.code}

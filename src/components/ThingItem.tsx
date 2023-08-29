@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     warningIconContainer: {
-        backgroundColor: 'red',
+        backgroundColor: '#DC143C',
         borderRadius: 2, padding: 2,
         alignItems: 'center',
         justifyContent: 'center',

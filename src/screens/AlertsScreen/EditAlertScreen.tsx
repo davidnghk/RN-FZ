@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   emergencyCallButton: {
-    backgroundColor: 'red',
+    backgroundColor: '#DC143C',
     width: '100%',
     height: 60,
     marginTop: 20,

@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     removeButton: {
-        backgroundColor: 'red',
+        backgroundColor: '#DC143C',
         height: '100%',
         padding: 10,
         alignItems: 'center',

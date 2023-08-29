@@ -88,7 +88,7 @@ export function fetchAmbienceDevices() {
 
         } catch (err) {
             console.log('[Error: Fetch ambience devices]', err);
-            RootNavigation.navigate('NetworkErrorScreen', {}, {})
+            RootNavigation.navigate('NetworkErrorScreen', {}, {});
         } finally {
             dispatch(ambienceDeviceListIsLoading(false));
         }
@@ -140,6 +140,7 @@ export function fetchRecord(deviceId: number) {
             RootNavigation.navigate('NetworkErrorScreen', {}, {})
         } finally {
             dispatch(ambienceDataIsLoading(false, deviceId));
+            
         }
     };
 };

@@ -36,7 +36,7 @@ export const AlertStackScreen = (props: any) => {
                     <View style={{ flexDirection: 'row' }}>
                         <RefreshButton name='refresh' size={18} target='alerts' />
                         <AlertNotifications
-                            name='bell-o'
+                            name='notifications'
                             size={18}
                             onPress={() => navigation.navigate('AlertsScreen')}
                         />

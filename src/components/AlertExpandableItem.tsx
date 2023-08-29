@@ -180,10 +180,12 @@ const getColorByAlertType = (alertType: string) => {
     const type = alertType.toLowerCase();
 
     if (type === 'alarm') {
-        return 'red'
+        return '#DC143C'
     } else if (type === 'drill') {
         return COLOR.drillItemColor
-    } else {
+    } else if (type === 'WaterLeak') {
+        return 'orange'
+    }else {
         return 'white'
     }
 
@@ -193,7 +195,7 @@ const getColorByAlertTypeForText = (alertType: string) => {
 
     switch (alertType) {
         case 'alarm':
-            return 'red'
+            return '#DC143C'
         case 'drill':
             return COLOR.drillItemColor
         case 'boot':
@@ -288,7 +290,7 @@ const styles = (props?: any, props2?: any) => StyleSheet.create({
         borderRadius: 8,
     },
     emergencyCallButtonText: {
-        color: 'red',
+        color: '#DC143C',
         //fontSize: 20,
         fontWeight: 'bold',
         paddingLeft: 5,

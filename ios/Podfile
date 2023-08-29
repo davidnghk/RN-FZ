@@ -42,6 +42,7 @@ target 'Faczilla' do
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils', '~> 4.1.0'
   pod 'GoogleUtilities', :modular_headers => true
+  
 
   pod 'FirebaseAnalytics'
   pod 'FirebaseAuth'

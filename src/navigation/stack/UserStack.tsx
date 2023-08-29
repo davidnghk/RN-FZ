@@ -47,7 +47,7 @@ export const UserStackScreen = () => {
           <View style={{flexDirection: 'row'}}>
             <RefreshButton name="refresh" size={18} target="user" />
             <AlertNotifications
-              name="bell-o"
+              name="notifications"
               size={18}
               onPress={() =>
                 navigation.navigate('Alerts', {screen: 'AlertsScreen'})

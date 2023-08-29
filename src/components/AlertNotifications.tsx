@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Badge } from 'react-native-elements';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootState } from '../store/store';
 import * as UserActions from '../store/actions/user';
 import COLOR from '../constants/Theme/color';
@@ -18,7 +18,7 @@ const AlertNotification = (props: any) => {
             {hasUnread ?
                 <TouchableOpacity onPress={props.onPress} >
                     <View style={styles.row}>
-                        <AntDesign name={props.name} size={props.size} color={COLOR.headerButtonColor} />
+                        <Ionicons name={props.name} size={props.size} color={COLOR.headerButtonColor} />
                         <Badge value="" status="error" containerStyle={styles.badgeStyle} />
                     </View>
 
@@ -27,7 +27,7 @@ const AlertNotification = (props: any) => {
                 :
 
                 <TouchableOpacity onPress={props.onPress} >
-                    <AntDesign name={props.name} size={props.size} color={COLOR.headerButtonColor} />
+                    <Ionicons name={props.name} size={props.size} color={COLOR.headerButtonColor} />
                 </TouchableOpacity>
             }
         </View>

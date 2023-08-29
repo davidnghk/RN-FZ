@@ -35,7 +35,7 @@ export const HomeStackScreen = (props: any) => {
                     <View style={{ flexDirection: 'row' }}>
                         <RefreshButton name='refresh' size={18} target='things' />
                         <AlertNotifications
-                            name='bell-o'
+                            name='notifications'
                             size={18}
                             onPress={() => navigation.navigate("Alerts", { screen: 'AlertsScreen' })}
                         />

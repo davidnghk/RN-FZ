@@ -66,7 +66,7 @@ export function fireSensorGetColorFromStatusOrWarning(alertStatus: string, onoff
     if (alertType === 'drill') {
         return COLOR.drillItemColor
     } else if (alertType.toLowerCase() === 'alarm') {
-        return 'red'
+        return '#DC143C'
     } else if (status === 'offline') {
         return COLOR.offlineItemColor
     } else if (status !== 'offline' && warningFlag) {
@@ -106,6 +106,116 @@ export const getTitleForAmbienceScreen = (title: string) => {
             return i18n.t('common:pm2_5')
         case "tvoc":
             return i18n.t('common:tvoc')
+    }
+}
+
+export const getTitleForThingsScreen = (title: string) => {
+
+    switch (title) {
+        case "Temperature":
+            return i18n.t('common:Temperature')
+        case "battery":
+            return i18n.t('common:Battery')
+        case "Hunmidity":
+            return i18n.t('common:Humidity')
+        case "humidity":
+            return i18n.t('common:Humidity')
+        case "Barometer":
+            return i18n.t('common:Barometer')
+        case "Gas Resistance":
+            return i18n.t('common:GasResistance')
+        case "co2":
+            return i18n.t('common:Co2')
+        case "hcho":
+            return i18n.t('common:Hcho')
+        case "light_level":
+            return i18n.t('common:LightLevel')
+        case "pir":
+            return i18n.t('common:Pir')
+        case "pm10":
+            return i18n.t('common:Pm10')
+        case "pm2.5":
+            return i18n.t('common:Pm2.5')
+        case "tvoc":
+            return i18n.t('common:tvoc')
+        case "step":
+            return i18n.t('common:Step')
+        case "signal_%":
+            return i18n.t('common:Signal Percentage')
+        case "body_temp":
+            return i18n.t('common:Body Temperature')
+        case "voltage_%":
+            return i18n.t('common:Voltage Percentage') 
+        case "wrist_temp":
+            return i18n.t('common:Wrist Temperature')   
+        case "blood_oxygen":
+            return i18n.t('common:Blood Oxygen')
+        case "BP Low":
+            return i18n.t('common:BP Low')
+        case "BP High":
+            return i18n.t('common:BP High')
+        case "Body Temp":
+            return i18n.t('common:Body Temperature')
+        case "Skin Temp":
+            return i18n.t('common:Skin Temperature')
+        case "Heart Beat":
+            return i18n.t('common:Heart Beat')
+        case "Volt %":
+            return i18n.t('common:Voltage Percentage')
+    }
+}
+
+export const getUnitForThingsScreen = (target: string) => {
+
+    switch (target) {
+        case "temperature":
+            return "°C"
+        case "battery":
+            return "V"
+        case "humidity":
+            return "%RH"
+        case "barometer":
+            return "hPa"
+        case "gasResistance":
+            return "KΩ"
+        case "gas_resistance":
+            return "KΩ"
+        case "co2":
+            return "ppm"
+        case "hcho":
+            return "ppb"
+        case "light_level":
+            return "lux"
+        case "pir":
+            return ""
+        case "pm10":
+            return "μg/m3"
+        case "pm2_5":
+            return "μg/m3"
+        case "tvoc":
+            return "ppb"
+        case "step":
+            return "steps"
+        case "signal_%":
+            return "%"
+        case "body_temp":
+            return "°C"
+        case "voltage_%":
+            return "%"
+        case "wrist_temp":
+            return "°C"
+        case "blood_oxygen":
+            return "%"
+        case "BP Low":
+            return "mmHg"
+        case "BP High":
+            return "mmHg"
+        case "Body Temp":
+            return "°C"
+        case "Skin Temp":
+            return "°C"
+        case "Heart Beat":
+            return "bpm"
     }
 }
 

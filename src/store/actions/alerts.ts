@@ -76,7 +76,7 @@ export function fetchAllAlerts() {
             };
 
             const data = await res.json();
-
+    
             if (data.no_of_records === 0) {
                 dispatch(loadAllAlerts([]));
                 return
@@ -88,9 +88,11 @@ export function fetchAllAlerts() {
 
             const latestAlert = data[0];
             const alertStatus = latestAlert.status.toLowerCase();
-            const alertType = latestAlert.alert_type;
-
-            // console.log(latestAlert);
+            
+            let alertType = latestAlert.alert_type;
+            if(alertType!==null){
+                alertType = latestAlert.alert_type.toLowerCase();
+            }
 
             if (alertStatus === 'set' && (alertType === 'alarm' || alertType === 'drill')) {
                 dispatch(loadLatestAlert(true, latestAlert));

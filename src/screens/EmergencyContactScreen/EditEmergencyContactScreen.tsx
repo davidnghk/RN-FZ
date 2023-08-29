@@ -206,7 +206,7 @@ const EditEmergencyContactScreen = ({ route, navigation }) => {
 
            
             <View style={styles.buttonContainer}>
-                <CustomButton style={{ backgroundColor: 'red', width: 100, marginHorizontal: 10 }} onPress={() => { setShowModal(true); }}>{t('buttons:delete')}</CustomButton>
+                <CustomButton style={{ backgroundColor: '#DC143C', width: 100, marginHorizontal: 10 }} onPress={() => { setShowModal(true); }}>{t('buttons:delete')}</CustomButton>
                 <CustomButton style={{ width: 100, marginHorizontal: 10 }} onPress={() => { updateContactHandler() }}>{t('buttons:update')}</CustomButton>
             </View>
 
