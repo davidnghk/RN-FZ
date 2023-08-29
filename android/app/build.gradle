@@ -7,7 +7,7 @@ project.ext.vectoricons = [
     iconFontNames: [ 'MaterialIcons.ttf', 'AntDesign.ttf', 'FontAwesome.tff', 'Ionicons.tff' ] // Name of the font files you want to copy
 ]
 
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+apply from: ("../../node_modules/react-native-vector-icons/fonts.gradle");
 
 import com.android.build.OutputFile
 
@@ -259,8 +259,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging'
     //implementation platform('com.google.firebase:firebase-bom:26.1.0')
     implementation project(':react-native-maps')
-    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    implementation platform('com.google.firebase:firebase-bom:32.2.2')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-analytics'
+
+    implementation project(':react-native-push-notification')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
 
@@ -269,6 +273,7 @@ dependencies {
         
     }
 
+    implementation project(':react-native-vector-icons')
 
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
     if (hermesEnabled.toBoolean()) {
@@ -276,6 +281,7 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+   
 }
 
 // Run this once to be able to run the application with BUCK

@@ -27,7 +27,7 @@
 
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_foreground" android:value="false"/>
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color" android:resource="@color/white"/> 
-      <meta-data  android:name="com.google.android.geo.API_KEY"  android:value="AIzaSyD06xKUH8-PQPog1L2-wraIZIaKhJ3RtZo"/> 
+      <meta-data  android:name="com.google.android.geo.API_KEY"  android:value="AIzaSyAoIzmXf8QmsRSm92sJ-Rk18KDUiicuM-w"/> 
       <meta-data  android:name="push_kit_auto_init_enabled" android:value="true" />
 
       <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />
@@ -54,7 +54,11 @@
         </intent-filter>
       </service>
 
-      
+        <service android:name=".java.MyFirebaseMessagingService" android:exported="false">
+      <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+      </intent-filter>
+    </service>
   
      <meta-data
         android:name="com.google.firebase.messaging.default_notification_channel_id"

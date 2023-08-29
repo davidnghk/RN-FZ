@@ -21,7 +21,6 @@ import com.airbnb.android.react.maps.MapsPackage;
 
 import com.RNFetchBlob.RNFetchBlobPackage;
 
-
 public class MainApplication extends Application implements ReactApplication {
   
 
@@ -42,7 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new HmsPushPackage());
           new MapsPackage()  ;
           new RNFetchBlobPackage();
-          
+          new VectorIconsPackage();
+
           return packages;
         }
 
